@@ -7,6 +7,8 @@ commands:
   hideplayers: true
   showplayers: true
   killall: true
+  day: true
+  night: true
   
 messages:
   huball-message: You have been telported to the lobby!

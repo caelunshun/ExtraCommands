@@ -31,10 +31,14 @@ public class KickAll implements CommandExecutor {
 			sender.sendMessage(ChatColor.GREEN + "Done!");
 			return true;
 		}
+			else {
+				sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
+			}
 		}
 		else if(cmd.getName().equalsIgnoreCase("kickall")
 			&& plugin.getConfig().getBoolean("commands.kickall")
 			&& args.length >= 1) {
+			if (sender instanceof ConsoleCommandSender || sender.hasPermission("extracommands.kickall")) {
 			for (Player p : Bukkit.getOnlinePlayers()) {
 				if (!p.hasPermission("extracommands.dodgekickall")) {
 					String message = arrayToString(args);
@@ -44,6 +48,10 @@ public class KickAll implements CommandExecutor {
 			sender.sendMessage(ChatColor.GREEN + "Done!");
 			
 			
+		}
+			else {
+				sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
+			}
 		}
 		return true;
 	}

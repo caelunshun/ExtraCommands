@@ -31,6 +31,11 @@ commands:
   killall:
     description: Kills all online players except those with the extracommands.dodgekillall permission
   
+  day:
+    description: Sets the time to day
+    
+  night:
+    description: Sets the time to night
     
 
 permissions:
@@ -68,6 +73,12 @@ permissions:
     default: false
     
   extracommands.dodgekillall:
+    default: false
+    
+  extracommands.day:
+    default: false
+    
+  extracommands.night:
     default: false
     
     

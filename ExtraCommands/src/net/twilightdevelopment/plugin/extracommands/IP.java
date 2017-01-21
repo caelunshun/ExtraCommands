@@ -45,8 +45,11 @@ private final JavaPlugin plugin;
 						sender.sendMessage("ERROR: Player " + victimName + " not found.");
 					}
 				
-				return true;
+				
 			}
+				else {
+					sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
+				}
 		}
 		return true;
 	}

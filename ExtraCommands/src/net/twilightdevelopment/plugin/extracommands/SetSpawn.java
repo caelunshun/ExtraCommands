@@ -27,6 +27,9 @@ public class SetSpawn implements CommandExecutor {
 				w.setSpawnLocation((int)player.getLocation().getX(), (int)player.getLocation().getY(), (int)player.getLocation().getZ());
 				player.sendMessage(ChatColor.GREEN + "Spawn set.");
 			}
+				else {
+					sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
+				}
 			}
 			else {
 				sender.sendMessage("You must be a player to execute this command.");

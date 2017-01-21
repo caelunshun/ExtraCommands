@@ -27,6 +27,9 @@ private final JavaPlugin plugin;
 				}
 				player.sendMessage(ChatColor.GREEN + "Players shown!");
 			}
+				else {
+					sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
+				}
 				
 			
 			

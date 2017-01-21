@@ -70,6 +70,9 @@ public class TPAll implements CommandExecutor {
 		}
 			
 		}
+			else {
+				sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
+			}
 		}			
 		return true;
 	}
