@@ -32,10 +32,10 @@ private final JavaPlugin plugin;
 			else {
 				sender.sendMessage(ChatColor.RED + "This command must be executed by a player.");
 			}
-			return true;
+			
 		}
 		
-		return false;
+		return true;
 	}
 	
 	

@@ -31,9 +31,9 @@ public class HubAll implements CommandExecutor {
 			
 			
 			}
-			return true;
+			
 			}
-			return false;
+			return true;
 		}
 		
 	

@@ -16,7 +16,8 @@ public class ExtraCommands extends JavaPlugin {
 		getCommand("setspawn").setExecutor(new SetSpawn(this));
 		getCommand("ip").setExecutor(new IP(this));
 		getCommand("hideplayers").setExecutor(new HidePlayers(this));
-		getCommand("showplayers").setExecutor(new SeePlayers(this));
+		getCommand("showplayers").setExecutor(new ShowPlayers(this));
+		getCommand("killall").setExecutor(new KillAll(this));
 	}
 	
 	public void onDisable() {

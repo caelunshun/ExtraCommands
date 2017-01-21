@@ -48,6 +48,6 @@ private final JavaPlugin plugin;
 				return true;
 			}
 		}
-		return false;
-}
+		return true;
+	}
 }

@@ -65,13 +65,13 @@ public class TPAll implements CommandExecutor {
 			
 		
 		else {
-			sender.sendMessage(ChatColor.RED + "Incorrect usage of command.");
+			sender.sendMessage(ChatColor.RED + "Incorrect usage of command. Usage: /tpall <x> <y> <z>");
 		}
 		}
-			return true;
+			
 		}
 		}			
-		return false;
+		return true;
 	}
 
 	public void TeleportAll(Location loc) {

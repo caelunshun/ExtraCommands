@@ -43,9 +43,9 @@ public class KickAll implements CommandExecutor {
 			}
 			sender.sendMessage(ChatColor.GREEN + "Done!");
 			
-			return true;
+			
 		}
-		return false;
+		return true;
 	}
 	
 	

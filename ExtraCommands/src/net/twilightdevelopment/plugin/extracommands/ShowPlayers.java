@@ -9,11 +9,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class SeePlayers implements CommandExecutor {
+public class ShowPlayers implements CommandExecutor {
 
 private final JavaPlugin plugin;
 	
-	public SeePlayers(JavaPlugin plugin) {
+	public ShowPlayers(JavaPlugin plugin) {
 		this.plugin = plugin;
 	}
 	
@@ -29,13 +29,13 @@ private final JavaPlugin plugin;
 			}
 				
 			
-			return true;
+			
 		}
 			else {
 				sender.sendMessage(ChatColor.RED + "This command must be executed by a player.");
 			}
 		}
-		return false;
+		return true;
 	}
 	
 	

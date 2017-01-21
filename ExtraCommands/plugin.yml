@@ -25,9 +25,11 @@ commands:
   hideplayers:
     description: Hides all players from sender
   
-    
   showplayers:
     description: Reveals all players from sender
+    
+  killall:
+    description: Kills all online players except those with the extracommands.dodgekillall permission
   
     
 
@@ -60,6 +62,12 @@ permissions:
     default: false
     
   extracommands.showplayers:
+    default: false
+    
+  extracommands.killall:
+    default: false
+    
+  extracommands.dodgekillall:
     default: false
     
     

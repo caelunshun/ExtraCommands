@@ -31,9 +31,9 @@ public class SetSpawn implements CommandExecutor {
 			else {
 				sender.sendMessage("You must be a player to execute this command.");
 			}
-			return true;
+			
 		}
-		return false;
+		return true;
 	}
 
 }
