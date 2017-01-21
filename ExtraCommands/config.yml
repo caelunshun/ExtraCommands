@@ -1,0 +1,15 @@
+commands:
+  huball: true
+  kickall: true
+  tpall: true
+  setspawn: true
+  ip: true
+  hideplayers: true
+  showplayers: true
+  
+messages:
+  huball-message: You have been telported to the lobby!
+  default-kickall-message: You have been kicked from the server!
+  tpall-message: You have been teleported!
+  
+  

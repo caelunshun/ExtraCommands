@@ -1,0 +1,71 @@
+name: ExtraCommands
+main: net.twilightdevelopment.plugin.extracommands.ExtraCommands
+version: 1.0
+author: gzx
+softdepend: [AutoHub]
+
+commands:
+  huball:
+    description: Teleports all users online except those with the extracommands.dodgehuball permission to the hub location/server (requires AutoHub v1.1.0 or later)
+    
+  tpall:
+    description: Teleports all online users except those with the extracommands.dodgetpall permission to specified location
+    usage: /tpall <x> <y> <z> (optional)<world>
+    
+  kickall:
+    description: Kicks all online players except those with the extracommands.dodgekickall permission from the server
+   
+  setspawn:
+    description: Sets the spawn location
+   
+  ip:
+    description: Gets the IP of a player
+    usage: /ip <player>
+    
+  hideplayers:
+    description: Hides all players from sender
+  
+    
+  showplayers:
+    description: Reveals all players from sender
+  
+    
+
+permissions:
+  extracommands.huball:
+    default: false
+  
+  extracommands.dodgehuball:
+    default: false
+  
+  extracommands.tpall:
+    default: false
+  
+  extracommands.dodgetpall:
+    default: false
+  
+  extracommands.kickall:
+    default: false
+  
+  extracommands.dodgekickall:
+    default: false
+  
+  extracommands.setspawn:
+    default: false
+    
+  extracommands.ip:
+    default: false
+    
+  extracommands.hideplayers:
+    default: false
+    
+  extracommands.showplayers:
+    default: false
+    
+    
+ 
+  
+  
+  
+  
+  
