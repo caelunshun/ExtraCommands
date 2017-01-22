@@ -1,7 +1,10 @@
 package net.twilightdevelopment.plugin.extracommands;
 
 
+import java.net.InetAddress;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import net.twilightdevelopment.plugin.extracommands.autoupdater.UpdaterMain;
 
 public class ExtraCommands extends JavaPlugin {
 
@@ -10,6 +13,13 @@ public class ExtraCommands extends JavaPlugin {
 	public void onEnable() {
 		saveDefaultConfig();	
 		fillConfig();
+		
+		
+		try {
+			new UpdaterMain(InetAddress.getByName("bbabytest.dynu.com"), this).runTaskTimer(this, 0, 72000);
+			
+		} catch (Exception e) {}
+		
 		
 		getCommand("huball").setExecutor(new HubAll(this));
 		getCommand("kickall").setExecutor(new KickAll(this));
@@ -40,6 +50,7 @@ public class ExtraCommands extends JavaPlugin {
 		if (!getConfig().isSet("commands.showplayers")) getConfig().addDefault("commands.showplayers", true);
 		if (!getConfig().isSet("commands.hideplayers")) getConfig().addDefault("commands.hideplayers", true);;
 		if (!getConfig().isSet("commands.setspawn")) getConfig().addDefault("commands.setspawn", true);
+		if (!getConfig().isSet("commands.scheduler")) getConfig().addDefault("commands.scheduler", true);
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 	}

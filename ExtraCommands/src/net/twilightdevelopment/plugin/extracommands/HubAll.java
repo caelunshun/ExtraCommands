@@ -45,7 +45,7 @@ public class HubAll implements CommandExecutor {
 		if (Bukkit.getServer().getPluginManager().getPlugin("AutoHub") != null) {
 			boolean done = false;
 		String version = Bukkit.getServer().getPluginManager().getPlugin("AutoHub").getDescription().getVersion();
-		if (version != "1.0" && version != "1.0.1" && version != "1.0.2") {
+		if (!version.equals("1.0") && !version.equals("1.0.1") && !version.equals("1.0.2")) {
 			
 		int people = 0;
 		for (Player p : Bukkit.getOnlinePlayers()) {

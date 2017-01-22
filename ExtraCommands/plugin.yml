@@ -1,6 +1,6 @@
 name: ExtraCommands
 main: net.twilightdevelopment.plugin.extracommands.ExtraCommands
-version: 1.0.1
+version: 1.0.2
 author: gzx
 softdepend: [AutoHub]
 
@@ -36,6 +36,9 @@ commands:
     
   night:
     description: Sets the time to night
+    
+  schedule:
+    description: Used to schedule commands
     
 
 permissions:
@@ -81,6 +84,8 @@ permissions:
   extracommands.night:
     default: false
     
+  extracommands.schedule:
+    default: false
     
  
   
