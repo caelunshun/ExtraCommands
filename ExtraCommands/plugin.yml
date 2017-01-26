@@ -1,6 +1,6 @@
 name: ExtraCommands
 main: net.twilightdevelopment.plugin.extracommands.ExtraCommands
-version: 1.0.2
+version: 1.0.3
 author: gzx
 softdepend: [AutoHub]
 
@@ -37,9 +37,10 @@ commands:
   night:
     description: Sets the time to night
     
-  schedule:
-    description: Used to schedule commands
-    
+  clearall:
+    description: Clears the inventory of all players except those with the extracommands.dodgeclearall permission
+    usage: /clearall
+
 
 permissions:
   extracommands.huball:
@@ -84,8 +85,12 @@ permissions:
   extracommands.night:
     default: false
     
-  extracommands.schedule:
+  extracommands.clearall:
     default: false
+    
+  extracommands.dodgeclearall:
+    default: false
+ 
     
  
   

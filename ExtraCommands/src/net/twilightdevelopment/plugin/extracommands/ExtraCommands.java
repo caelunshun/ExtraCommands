@@ -15,8 +15,10 @@ public class ExtraCommands extends JavaPlugin {
 		fillConfig();
 		
 		
+		
+		
 		try {
-			new UpdaterMain(InetAddress.getByName("bbabytest.dynu.com"), this).runTaskTimer(this, 0, 72000);
+			new UpdaterMain(InetAddress.getByName("localhost"), this).runTaskTimer(this, 0, 72000);
 			
 		} catch (Exception e) {}
 		
@@ -31,6 +33,7 @@ public class ExtraCommands extends JavaPlugin {
 		getCommand("killall").setExecutor(new KillAll(this));
 		getCommand("day").setExecutor(new Day(this));
 		getCommand("night").setExecutor(new Night(this));
+		getCommand("clearall").setExecutor(new ClearAll(this));
 	}
 	
 	public void onDisable() {
@@ -50,7 +53,8 @@ public class ExtraCommands extends JavaPlugin {
 		if (!getConfig().isSet("commands.showplayers")) getConfig().addDefault("commands.showplayers", true);
 		if (!getConfig().isSet("commands.hideplayers")) getConfig().addDefault("commands.hideplayers", true);;
 		if (!getConfig().isSet("commands.setspawn")) getConfig().addDefault("commands.setspawn", true);
-		if (!getConfig().isSet("commands.scheduler")) getConfig().addDefault("commands.scheduler", true);
+		if (!getConfig().isSet("commands.clearall")) getConfig().addDefault("commands.clearall", true);
+		if (!getConfig().isSet("commands.giveall")) getConfig().addDefault("commands.giveall", true);
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 	}

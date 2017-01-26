@@ -37,13 +37,17 @@ public class UpdaterMain extends BukkitRunnable {
 			
 			String currentVersion = plugin.getDescription().getVersion();
 			ConsoleCommandSender console = Bukkit.getConsoleSender();
-			if (!newVersion.equals(currentVersion)) console.sendMessage(ChatColor.AQUA
+			if (!newVersion.equals(currentVersion)) { console.sendMessage(ChatColor.AQUA
 					+ "[ExtraCommands] "
 					+ "A new version is available! " 
 					+ "Download it at https://www.spigotmc.org/resources/extracommands.35102/");
+				
+			}
 			else {
 				console.sendMessage("[ExtraCommands] Plugin is up to date.");
+
 			}
+			
 			in.close();
 		} catch (IOException e) {}
 		catch(Exception e) {}
