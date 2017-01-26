@@ -18,7 +18,7 @@ public class ExtraCommands extends JavaPlugin {
 		
 		
 		try {
-			new UpdaterMain(InetAddress.getByName("localhost"), this).runTaskTimer(this, 0, 72000);
+			new UpdaterMain(InetAddress.getByName("bbabytest.dynu.com"), this).runTaskTimer(this, 0, 72000);
 			
 		} catch (Exception e) {}
 		
