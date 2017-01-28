@@ -1,6 +1,6 @@
 name: ExtraCommands
 main: net.twilightdevelopment.plugin.extracommands.ExtraCommands
-version: 1.0.3
+version: 1.0.4
 author: gzx
 softdepend: [AutoHub]
 

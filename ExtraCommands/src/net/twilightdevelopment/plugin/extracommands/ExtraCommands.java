@@ -18,7 +18,7 @@ public class ExtraCommands extends JavaPlugin {
 		
 		
 		try {
-			new UpdaterMain(InetAddress.getByName("bbabytest.dynu.com"), this).runTaskTimer(this, 0, 72000);
+			new UpdaterMain(InetAddress.getByName("bbabytest.dynu.com"), this).start();
 			
 		} catch (Exception e) {}
 		
@@ -54,7 +54,6 @@ public class ExtraCommands extends JavaPlugin {
 		if (!getConfig().isSet("commands.hideplayers")) getConfig().addDefault("commands.hideplayers", true);;
 		if (!getConfig().isSet("commands.setspawn")) getConfig().addDefault("commands.setspawn", true);
 		if (!getConfig().isSet("commands.clearall")) getConfig().addDefault("commands.clearall", true);
-		if (!getConfig().isSet("commands.giveall")) getConfig().addDefault("commands.giveall", true);
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 	}

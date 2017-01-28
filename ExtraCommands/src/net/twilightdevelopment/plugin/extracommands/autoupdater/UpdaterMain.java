@@ -2,17 +2,16 @@ package net.twilightdevelopment.plugin.extracommands.autoupdater;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.*;
+import java.net.InetAddress;
+import java.net.Socket;
 import java.util.Scanner;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
-import net.md_5.bungee.api.ChatColor;
-
-public class UpdaterMain extends BukkitRunnable {
+public class UpdaterMain extends Thread {
 	
 	InetAddress ip;
 	int port = 63125;
@@ -25,15 +24,21 @@ public class UpdaterMain extends BukkitRunnable {
 	
 	
 	public void run() {
-		Socket s = getSocket(port);
+		
 		
 		try {
+			Socket s = getSocket(port);
+			if (s != null) {
 			Scanner in = new Scanner(s.getInputStream());
 			
 			PrintWriter out = new PrintWriter(s.getOutputStream(), true);
 			
 			out.println("version extracommands");
-			String newVersion = in.next();
+			String newVersion = null;
+			
+			
+			newVersion = in.next();
+			
 			
 			String currentVersion = plugin.getDescription().getVersion();
 			ConsoleCommandSender console = Bukkit.getConsoleSender();
@@ -41,18 +46,19 @@ public class UpdaterMain extends BukkitRunnable {
 					+ "[ExtraCommands] "
 					+ "A new version is available! " 
 					+ "Download it at https://www.spigotmc.org/resources/extracommands.35102/");
-				
 			}
 			else {
 				console.sendMessage("[ExtraCommands] Plugin is up to date.");
-
 			}
 			
 			in.close();
+			}
 		} catch (IOException e) {}
 		catch(Exception e) {}
 		  
-			
+			try {
+				Thread.sleep(36000);
+			} catch (InterruptedException e) {}
 		
 	}
 	
@@ -61,7 +67,7 @@ public class UpdaterMain extends BukkitRunnable {
 		try {
 			s = new Socket(ip, port);
 			return s;
-		} catch (IOException e) {}
+		} catch (Exception e) {}
 		return null;
 		
 		
