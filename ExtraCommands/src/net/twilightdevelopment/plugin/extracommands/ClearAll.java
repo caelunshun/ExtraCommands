@@ -6,7 +6,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.md_5.bungee.api.ChatColor;
@@ -29,6 +28,7 @@ public class ClearAll implements CommandExecutor {
 					}
 					
 				}
+				sender.sendMessage(ChatColor.GREEN + "Done!");
 			}
 			else return false;
 		}
