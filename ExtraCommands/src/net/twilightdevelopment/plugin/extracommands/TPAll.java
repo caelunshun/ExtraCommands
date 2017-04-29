@@ -64,15 +64,15 @@ public class TPAll implements CommandExecutor {
 				}
 			
 		
-		else {
+		else 
 			sender.sendMessage(ChatColor.RED + "Incorrect usage of command. Usage: /tpall <x> <y> <z>");
-		}
+		
 		}
 			
 		}
-			else {
+			else 
 				sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
-			}
+			
 		}			
 		return true;
 	}

@@ -24,16 +24,16 @@ public class HubAll implements CommandExecutor {
 				if (TPAllToHub()) {
 					sender.sendMessage(ChatColor.GREEN + "Teleported all players to the hub!");
 				}
-				else {
+				else 
 					sender.sendMessage(ChatColor.RED + "Error: Hub not set or AutoHub is not installed.");
-				}
+				
 				
 			
 			
 			}
-			else {
+			else 
 				sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
-			}
+			
 			}
 			return true;
 		}
@@ -53,9 +53,9 @@ public class HubAll implements CommandExecutor {
 		done = API.tpToHub(p);
 		p.sendMessage(plugin.getConfig().getString("messages.huball-message"));
 		}
-			else {
+			else 
 				people++;
-			}
+			
 			if (people == Bukkit.getOnlinePlayers().size()) {
 				return true;
 			}

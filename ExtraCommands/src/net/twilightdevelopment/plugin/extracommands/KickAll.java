@@ -31,9 +31,9 @@ public class KickAll implements CommandExecutor {
 			sender.sendMessage(ChatColor.GREEN + "Done!");
 			return true;
 		}
-			else {
+			else 
 				sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
-			}
+			
 		}
 		else if(cmd.getName().equalsIgnoreCase("kickall")
 			&& plugin.getConfig().getBoolean("commands.kickall")
@@ -49,9 +49,9 @@ public class KickAll implements CommandExecutor {
 			
 			
 		}
-			else {
+			else 
 				sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
-			}
+			
 		}
 		return true;
 	}

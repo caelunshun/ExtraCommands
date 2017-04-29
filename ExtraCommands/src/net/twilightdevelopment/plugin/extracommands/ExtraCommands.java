@@ -8,9 +8,10 @@ import net.twilightdevelopment.plugin.extracommands.autoupdater.UpdaterMain;
 
 public class ExtraCommands extends JavaPlugin {
 
-	
+	public static ExtraCommands instance;
 	
 	public void onEnable() {
+		instance = this;
 		saveDefaultConfig();	
 		fillConfig();
 		
@@ -56,6 +57,9 @@ public class ExtraCommands extends JavaPlugin {
 		saveConfig();
 	}
 	
+	public static ExtraCommands getInstance() {
+		return instance;
+	}
 	}
 	
 	

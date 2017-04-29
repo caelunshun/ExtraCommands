@@ -29,9 +29,9 @@ public class KillAll implements CommandExecutor {
 			}
 			sender.sendMessage(ChatColor.GREEN + "Done!");
 		}
-			else {
+			else 
 				sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
-			}
+			
 			
 		}
 		

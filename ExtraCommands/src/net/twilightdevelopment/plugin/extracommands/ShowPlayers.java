@@ -27,16 +27,16 @@ private final JavaPlugin plugin;
 				}
 				player.sendMessage(ChatColor.GREEN + "Players shown!");
 			}
-				else {
+				else 
 					sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
-				}
+				
 				
 			
 			
 		}
-			else {
+			else 
 				sender.sendMessage(ChatColor.RED + "This command must be executed by a player.");
-			}
+			
 		}
 		return true;
 	}

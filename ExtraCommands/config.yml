@@ -10,6 +10,7 @@ commands:
   day: true
   night: true
   clearall: true
+  giveall: true
   
 messages:
   huball-message: You have been telported to the lobby!
@@ -17,6 +18,7 @@ messages:
   tpall-message: You have been teleported!
   killall-message: You were killed!
   clearall-message: Your inventory has been cleared!
+  giveall-message: You received an item!
  
   
 

@@ -35,9 +35,9 @@ public class Night implements CommandExecutor {
 				world.setFullTime(13000);
 				sender.sendMessage(ChatColor.GREEN + "Time set to night!");
 			}
-			else {
+			else 
 				sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
-			}
+			
 		}
 		return true;
 	}

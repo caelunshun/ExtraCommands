@@ -33,9 +33,9 @@ private final JavaPlugin plugin;
 				world.setFullTime(1000);
 				sender.sendMessage(ChatColor.GREEN + "Time set to day!");
 			}
-			else if (!sender.hasPermission("extracommands.day")) {
+			else if (!sender.hasPermission("extracommands.day")) 
 				sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
-			}
+			
 		}
 		return true;
 	}
