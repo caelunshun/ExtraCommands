@@ -22,7 +22,7 @@ public class GiveAll implements CommandExecutor {
 					for (Player p : Bukkit.getOnlinePlayers()) {
 						p.sendMessage(ExtraCommands.getInstance().getConfig().getString("messages.giveall-message"));
 						Bukkit.getServer().dispatchCommand(sender, "give " + p.getName() + " " + args[0] + " " + amount);
-				}
+				} 
 					sender.sendMessage(ChatColor.GREEN + "Done!");
 				}
 			}
