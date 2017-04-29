@@ -53,6 +53,7 @@ public class ExtraCommands extends JavaPlugin {
 		if (!getConfig().isSet("commands.hideplayers")) getConfig().addDefault("commands.hideplayers", true);;
 		if (!getConfig().isSet("commands.setspawn")) getConfig().addDefault("commands.setspawn", true);
 		if (!getConfig().isSet("commands.clearall")) getConfig().addDefault("commands.clearall", true);
+		if (!getConfig().isSet("commands.giveall")) getConfig().addDefault("commands.giveall", true);
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 	}
