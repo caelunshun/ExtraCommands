@@ -58,7 +58,7 @@ public class TPAll implements CommandExecutor {
 					sender.sendMessage(ChatColor.RED + "Usage: /tpall <x> <y> <z> (optional)<world>");
 					failed = true;
 				}
-				if (failed == false) {
+				if (!failed) {
 				TeleportAll(new Location(Bukkit.getWorld(w), x, y, z));
 				sender.sendMessage(ChatColor.GREEN + "Done!");
 				}

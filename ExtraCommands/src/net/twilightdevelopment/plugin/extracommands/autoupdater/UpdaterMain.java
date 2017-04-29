@@ -47,9 +47,9 @@ public class UpdaterMain extends Thread {
 					+ "A new version is available! " 
 					+ "Download it at https://www.spigotmc.org/resources/extracommands.35102/");
 			}
-			else {
+			else 
 				console.sendMessage("[ExtraCommands] Plugin is up to date.");
-			}
+			
 			
 			in.close();
 			}

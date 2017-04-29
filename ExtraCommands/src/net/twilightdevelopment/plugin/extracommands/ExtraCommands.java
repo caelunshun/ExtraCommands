@@ -14,9 +14,6 @@ public class ExtraCommands extends JavaPlugin {
 		saveDefaultConfig();	
 		fillConfig();
 		
-		
-		
-		
 		try {
 			new UpdaterMain(InetAddress.getByName("bbabytest.dynu.com"), this).start();
 			
