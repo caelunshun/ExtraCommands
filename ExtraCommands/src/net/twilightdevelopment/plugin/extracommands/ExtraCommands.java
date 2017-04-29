@@ -31,6 +31,7 @@ public class ExtraCommands extends JavaPlugin {
 		getCommand("day").setExecutor(new Day(this));
 		getCommand("night").setExecutor(new Night(this));
 		getCommand("clearall").setExecutor(new ClearAll(this));
+		getCommand("giveall").setExecutor(new GiveAll());
 	}
 	
 	public void onDisable() {

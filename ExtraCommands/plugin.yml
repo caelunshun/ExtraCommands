@@ -40,6 +40,10 @@ commands:
   clearall:
     description: Clears the inventory of all players except those with the extracommands.dodgeclearall permission
     usage: /clearall
+    
+  giveall:
+    description: Gives an item to all players
+    usage: /giveall <item> <amount> (both required)
 
 
 permissions:
@@ -89,6 +93,9 @@ permissions:
     default: false
     
   extracommands.dodgeclearall:
+    default: false
+    
+  extracommands.giveall:
     default: false
  
     
