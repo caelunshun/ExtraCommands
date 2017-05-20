@@ -1,7 +1,7 @@
 <project name="ExtraCommands">
 <target name="createJARFile">
   <mkdir dir="./ExtraCommands/classes"/>
-  <javadoc sourcepath="./AutoHub/src" destdir="./ExtraCommands/docs">
+  <javadoc sourcepath="./ExtraCommands/src" destdir="./ExtraCommands/docs">
      <classpath> <pathelement location="../AutoHub/spigot-api-1.11.2-R0.1-SNAPSHOT-shaded.jar"/> </classpath>
   </javadoc>
 <javac srcdir="./ExtraCommands/src" destdir ="./ExtraCommands/classes">
