@@ -5,7 +5,7 @@
      <classpath> <pathelement location="spigot-api-1.11.2-R0.1-SNAPSHOT-shaded.jar"/> </classpath>
   </javadoc>
 <javac srcdir="./ExtraCommands/src" destdir ="./ExtraCommands/classes">
-  <classpath> <pathelement location="../AutoHub/spigot-api-1.11.2-R0.1-SNAPSHOT-shaded.jar"/> </classpath>
+  <classpath> <pathelement location="spigot-api-1.11.2-R0.1-SNAPSHOT-shaded.jar"/> </classpath>
   </javac>
 <jar destfile="./ExtraCommands.jar" basedir="./ExtraCommands/classes">
 <fileset file="./ExtraCommands/plugin.yml"/>
