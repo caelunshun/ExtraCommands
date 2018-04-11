@@ -4,22 +4,18 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+public class TPAll extends ExtraCommandExecutor {
 
-
-public class TPAll implements CommandExecutor {
-
-	private final JavaPlugin plugin;
-	
 	public TPAll(JavaPlugin plugin) {
-		this.plugin = plugin;
+		super(plugin);
 	}
 
+	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (cmd.getName().equalsIgnoreCase("tpall")
 				&& plugin.getConfig().getBoolean("commands.tpall")) {
@@ -38,7 +34,7 @@ public class TPAll implements CommandExecutor {
 					failed = true;
 				}
 				if (failed == false) {
-				TeleportAll(new Location(Bukkit.getWorld("world"), x, y, z));
+				teleportAll(new Location(Bukkit.getWorld("world"), x, y, z));
 				sender.sendMessage(ChatColor.GREEN + "Done!");
 				}
 				
@@ -59,7 +55,7 @@ public class TPAll implements CommandExecutor {
 					failed = true;
 				}
 				if (!failed) {
-				TeleportAll(new Location(Bukkit.getWorld(w), x, y, z));
+				teleportAll(new Location(Bukkit.getWorld(w), x, y, z));
 				sender.sendMessage(ChatColor.GREEN + "Done!");
 				}
 			
@@ -77,7 +73,7 @@ public class TPAll implements CommandExecutor {
 		return true;
 	}
 
-	public void TeleportAll(Location loc) {
+	public void teleportAll(Location loc) {
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			if (!p.hasPermission("extracommands.dodgetpall")) {
 			p.teleport(loc);

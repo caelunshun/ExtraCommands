@@ -2,21 +2,19 @@ package net.twilightdevelopment.plugin.extracommands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class HidePlayers implements CommandExecutor {
-
-private final JavaPlugin plugin;
+public class HidePlayers extends ExtraCommandExecutor {
 	
 	public HidePlayers(JavaPlugin plugin) {
-		this.plugin = plugin;
+		super(plugin);
 	}
-	
+
+	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (plugin.getConfig().getBoolean("commands.hideplayers")) {
 			if (sender instanceof Player) {
