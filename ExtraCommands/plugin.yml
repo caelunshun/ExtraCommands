@@ -97,6 +97,9 @@ permissions:
     
   extracommands.giveall:
     default: false
+  
+  extracommands.dodgegiveall:
+    default: false
  
     
  

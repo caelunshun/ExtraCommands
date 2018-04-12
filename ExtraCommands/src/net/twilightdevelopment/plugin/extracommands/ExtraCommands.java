@@ -66,6 +66,8 @@ public class ExtraCommands extends JavaPlugin {
 			getConfig().addDefault("commands.giveall", true);
 		if (!getConfig().isSet("update-checker"))
 			getConfig().addDefault("update-checker", true);
+		if (!getConfig().isSet("messages.command-disabled-message"))
+			getConfig().addDefault("messages.command-disabled-message", "This command is disabled.");
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 	}

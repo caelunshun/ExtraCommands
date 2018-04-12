@@ -19,7 +19,7 @@ messages:
   killall-message: You were killed!
   clearall-message: Your inventory has been cleared!
   giveall-message: You received an item!
- 
+  command-disabled-message: This command is disabled.
   
 
 
