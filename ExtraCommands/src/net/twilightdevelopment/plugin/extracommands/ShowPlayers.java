@@ -21,7 +21,7 @@ public class ShowPlayers extends ExtraCommandExecutor {
 				if (sender.hasPermission("extracommands.showplayers")) {
 				Player player = (Player) sender;
 				for (Player p : Bukkit.getOnlinePlayers()) {
-					player.showPlayer(p);
+					player.showPlayer(plugin, p);
 				}
 				player.sendMessage(ChatColor.GREEN + "Players shown!");
 			}

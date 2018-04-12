@@ -21,7 +21,7 @@ public class HidePlayers extends ExtraCommandExecutor {
 				if (sender.hasPermission("extracommands.hideplayers")) {
 				Player player  = (Player) sender;
 				for (Player p : Bukkit.getOnlinePlayers()) {
-					player.hidePlayer(p);
+					player.hidePlayer(plugin, p);
 				}
 				player.sendMessage(ChatColor.GREEN + "Players hidden!");
 			}
