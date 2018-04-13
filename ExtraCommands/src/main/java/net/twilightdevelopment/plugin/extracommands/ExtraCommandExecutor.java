@@ -48,7 +48,7 @@ public abstract class ExtraCommandExecutor implements CommandExecutor {
 	}
 	
 	protected void sendDisabledMessage(CommandSender sender) {
-		sender.sendMessage(plugin.getConfig().getString("messages.command-disabled-message"));
+		sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.command-disabled-message")));
 	}
 	
 	protected void sendNoPermissionMessage(CommandSender sender) {

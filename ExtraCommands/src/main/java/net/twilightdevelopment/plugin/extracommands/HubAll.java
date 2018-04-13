@@ -43,7 +43,7 @@ public class HubAll extends ExtraCommandExecutor {
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			if (!p.hasPermission("extracommands.dodgehuball")) {
 		done = API.tpToHub(p);
-		p.sendMessage(plugin.getConfig().getString("messages.huball-message"));
+		p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.huball-message")));
 		}
 			else 
 				people++;

@@ -22,7 +22,7 @@ public class KillAll extends ExtraCommandExecutor {
 			for (Player p : Bukkit.getOnlinePlayers()) {
 				if (!p.hasPermission("extracommands.dodgekillall")) {
 					p.setHealth(0);
-					p.sendMessage(plugin.getConfig().getString("messages.killall-message"));
+					p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.killall-message")));
 				}
 			}
 			sender.sendMessage(ChatColor.GREEN + "Done!");

@@ -24,7 +24,7 @@ public class ClearAll extends ExtraCommandExecutor {
 					if (!p.hasPermission("extracommands.dodgeclearall")) {
 					p.getInventory().clear();
 					p.updateInventory();
-					p.sendMessage(plugin.getConfig().getString("messages.clearall-message"));
+					p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.clearall-message")));
 					}
 					
 				}

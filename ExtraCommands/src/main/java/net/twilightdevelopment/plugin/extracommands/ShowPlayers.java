@@ -27,10 +27,6 @@ public class ShowPlayers extends ExtraCommandExecutor {
 			}
 				else 
 					sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
-				
-				
-			
-			
 		}
 			else 
 				sender.sendMessage(ChatColor.RED + "This command must be executed by a player.");

@@ -39,7 +39,7 @@ public class IP extends ExtraCommandExecutor {
 					}
 					else {
 						String victimName = args[0];
-						sender.sendMessage("ERROR: Player " + victimName + " not found.");
+						sender.sendMessage(ChatColor.RED + "Player " + victimName + " not found.");
 					}
 				
 				
