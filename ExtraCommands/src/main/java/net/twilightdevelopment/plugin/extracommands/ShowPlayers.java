@@ -32,6 +32,8 @@ public class ShowPlayers extends ExtraCommandExecutor {
 				sender.sendMessage(ChatColor.RED + "This command must be executed by a player.");
 			
 		}
+		else
+			sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.command-disabled-message")));
 		return true;
 	}
 	

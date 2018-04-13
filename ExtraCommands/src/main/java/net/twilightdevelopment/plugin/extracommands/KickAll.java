@@ -52,6 +52,8 @@ public class KickAll extends ExtraCommandExecutor {
 				sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
 			
 		}
+		else
+			sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.command-disabled-message")));
 		return true;
 	}
 	

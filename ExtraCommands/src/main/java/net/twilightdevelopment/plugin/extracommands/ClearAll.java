@@ -19,23 +19,24 @@ public class ClearAll extends ExtraCommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (sender.hasPermission("extracommands.clearall") || sender instanceof ConsoleCommandSender) {
 			if (plugin.getConfig().getBoolean("commands.clearall")) {
-			if (args.length == 0) {
-				for (Player p : Bukkit.getOnlinePlayers()) {
-					if (!p.hasPermission("extracommands.dodgeclearall")) {
-					p.getInventory().clear();
-					p.updateInventory();
-					p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.clearall-message")));
+				if (args.length == 0) {
+					for (Player p : Bukkit.getOnlinePlayers()) {
+						if (!p.hasPermission("extracommands.dodgeclearall")) {
+							p.getInventory().clear();
+							p.updateInventory();
+							p.sendMessage(ChatColor.translateAlternateColorCodes('&',
+									plugin.getConfig().getString("messages.clearall-message")));
+						}
+
 					}
-					
-				}
-				sender.sendMessage(ChatColor.GREEN + "Done!");
+					sender.sendMessage(ChatColor.GREEN + "Done!");
+				} else
+					return false;
 			}
-			else return false;
-		}
-		}
-		else 
+			else sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.command-disabled-message")));
+		} else
 			sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command.");
-		
+
 		return true;
 	}
 

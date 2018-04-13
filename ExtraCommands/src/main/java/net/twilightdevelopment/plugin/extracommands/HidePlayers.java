@@ -35,6 +35,8 @@ public class HidePlayers extends ExtraCommandExecutor {
 			
 			
 		}
+		else
+			sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.command-disabled-message")));
 		
 		return true;
 	}
