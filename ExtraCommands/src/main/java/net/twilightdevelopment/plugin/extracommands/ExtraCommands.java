@@ -11,7 +11,7 @@ public class ExtraCommands extends JavaPlugin {
 	public void onEnable() {
 		instance = this;
 		saveDefaultConfig();
-		fillConfig();
+		//fillConfig();
 
 		try {
 			if (getConfig().getBoolean("update-checker"))
@@ -36,7 +36,7 @@ public class ExtraCommands extends JavaPlugin {
 
 	public void onDisable() {
 		saveDefaultConfig();
-		fillConfig();
+		//fillConfig();
 	}
 
 	public void fillConfig() {

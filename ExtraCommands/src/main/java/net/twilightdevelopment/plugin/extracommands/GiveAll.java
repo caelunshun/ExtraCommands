@@ -52,7 +52,7 @@ public class GiveAll extends ExtraCommandExecutor {
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			if (!p.hasPermission("extracommands.dodgegiveall")) {
 				p.getInventory().addItem(toGive);
-				p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages-giveall-message")));
+				p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.giveall-message")));
 			}
 		}
 		
