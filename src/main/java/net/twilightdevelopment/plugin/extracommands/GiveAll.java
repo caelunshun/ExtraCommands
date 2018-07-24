@@ -12,7 +12,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.StringUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -67,7 +66,8 @@ public class GiveAll extends ExtraCommandExecutor {
         ChatColor.translateAlternateColorCodes(
             '&', plugin.getConfig().getString("messages.giveall-message"));
     for (Player p : Bukkit.getOnlinePlayers()) {
-      if (!p.hasPermission("extracommands.dodgegiveall")) {
+      if (!p.hasPermission("extracommands.dodgegiveall")
+          && (!plugin.getConfig().getBoolean("affect-command-issuer") || !p.equals(sender))) {
         p.getInventory().addItem(toGive);
         p.sendMessage(message);
       }

@@ -1,3 +1,8 @@
+# If set to true, the "all" commands will affect the issuer
+# of the command as well as everyone else online. If not,
+# the issuer will not be affected.
+affect-command-issuer: true
+
 commands:
   huball: true
   kickall: true

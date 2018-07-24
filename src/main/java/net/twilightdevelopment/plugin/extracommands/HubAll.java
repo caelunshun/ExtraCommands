@@ -19,7 +19,7 @@ public class HubAll extends net.twilightdevelopment.plugin.extracommands.ExtraCo
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
     if (plugin.getConfig().getBoolean("commands.huball")) {
       if (sender.hasPermission("extracommands.huball") || sender instanceof ConsoleCommandSender) {
-        if (tpAllToHub()) {
+        if (tpAllToHub(sender)) {
           sender.sendMessage(ChatColor.GREEN + "Teleported all players to the hub!");
         } else
           sender.sendMessage(ChatColor.RED + "Error: Hub not set or AutoHub is not installed.");
@@ -33,7 +33,7 @@ public class HubAll extends net.twilightdevelopment.plugin.extracommands.ExtraCo
     return true;
   }
 
-  private boolean tpAllToHub() {
+  private boolean tpAllToHub(CommandSender sender) {
     if (Bukkit.getServer().getPluginManager().getPlugin("AutoHub") != null) {
       boolean done = false;
       String version =
@@ -42,7 +42,8 @@ public class HubAll extends net.twilightdevelopment.plugin.extracommands.ExtraCo
 
         int people = 0;
         for (Player p : Bukkit.getOnlinePlayers()) {
-          if (!p.hasPermission("extracommands.dodgehuball")) {
+          if (!p.hasPermission("extracommands.dodgehuball")
+              && (!plugin.getConfig().getBoolean("affect-command-issuer") || !p.equals(sender))) {
             done = API.tpToHub(p);
             p.sendMessage(
                 ChatColor.translateAlternateColorCodes(

@@ -39,7 +39,7 @@ public class TPAll extends ExtraCommandExecutor {
             failed = true;
           }
           if (failed == false) {
-            teleportAll(new Location(Bukkit.getWorld("world"), x, y, z));
+            teleportAll(new Location(Bukkit.getWorld("world"), x, y, z), sender);
             sender.sendMessage(ChatColor.GREEN + "Done!");
           }
 
@@ -64,7 +64,7 @@ public class TPAll extends ExtraCommandExecutor {
                   String.format(ChatColor.RED + "Error: World %s does not exist.", w));
             }
 
-            teleportAll(new Location(Bukkit.getWorld(w), x, y, z));
+            teleportAll(new Location(Bukkit.getWorld(w), x, y, z), sender);
             sender.sendMessage(ChatColor.GREEN + "Done!");
           } else
             sender.sendMessage(
@@ -81,9 +81,10 @@ public class TPAll extends ExtraCommandExecutor {
     return true;
   }
 
-  public void teleportAll(Location loc) {
+  private void teleportAll(Location loc, CommandSender sender) {
     for (Player p : Bukkit.getOnlinePlayers()) {
-      if (!p.hasPermission("extracommands.dodgetpall")) {
+      if (!p.hasPermission("extracommands.dodgetpall")
+              && (!plugin.getConfig().getBoolean("affect-command-issuer") || !p.equals(sender))) {
         p.teleport(loc);
         p.sendMessage(
             ChatColor.translateAlternateColorCodes(
