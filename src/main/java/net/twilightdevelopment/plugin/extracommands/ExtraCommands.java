@@ -1,6 +1,7 @@
 package net.twilightdevelopment.plugin.extracommands;
 
 import net.twilightdevelopment.plugin.extracommands.autoupdater.ExtraCommandsUpdater;
+import org.bstats.bukkit.MetricsLite;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -11,6 +12,7 @@ public class ExtraCommands extends JavaPlugin {
 
   public void onEnable() {
     instance = this;
+    MetricsLite metrics = new MetricsLite(this);
     saveDefaultConfig();
 
     if (getConfig().getBoolean("update-checker"))

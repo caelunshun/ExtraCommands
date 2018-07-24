@@ -22,6 +22,6 @@ messages:
   command-disabled-message: 'This command is disabled.'
   
 
-
+update-checker: true
   
   
