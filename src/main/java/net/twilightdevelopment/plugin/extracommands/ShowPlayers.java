@@ -15,7 +15,7 @@ public class ShowPlayers extends ExtraCommandExecutor {
 
   @Override
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-    if (plugin.getConfig().getBoolean("commands.seeplayers")) {
+    if (plugin.getConfig().getBoolean("commands.showplayers")) {
       if (sender instanceof Player) {
         if (sender.hasPermission("extracommands.showplayers")) {
           Player player = (Player) sender;
