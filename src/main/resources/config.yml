@@ -13,14 +13,13 @@ commands:
   giveall: true
   
 messages:
-  huball-message: 'You have been telported to the lobby!'
-  default-kickall-message: 'You have been kicked from the server!'
-  tpall-message: 'You have been teleported!'
-  killall-message: 'You were killed!'
-  clearall-message: 'Your inventory has been cleared!'
-  giveall-message: 'You received an item!'
-  command-disabled-message: 'This command is disabled.'
-  
+  huball-message: '&7&lServer&5>>&b&lYou have been telported to the lobby!'
+  default-kickall-message: '&7&lServer&5>>&b&lYou have been kicked!'
+  tpall-message: '&7&lServer&5>>&b&lYou have been teleported!'
+  killall-message: '&7&lServer&5>>&b&lYou were killed!'
+  clearall-message: '&7&lServer&5>>&b&lYour inventory has been cleared!'
+  giveall-message: '&7&lServer&5>>&b&lYou received an item!'
+  command-disabled-message: '&7&lServer&5>>This command is disabled.'
 
 update-checker: true
   

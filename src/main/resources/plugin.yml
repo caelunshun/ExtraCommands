@@ -1,6 +1,6 @@
-name: ExtraCommands
+name: ${project.name}
 main: net.twilightdevelopment.plugin.extracommands.ExtraCommands
-version: 1.1
+version: ${project.version}
 author: gzx
 softdepend: [AutoHub]
 api-version: 1.13
@@ -8,6 +8,7 @@ api-version: 1.13
 commands:
   huball:
     description: Teleports all users online except those with the extracommands.dodgehuball permission to the hub location/server (requires AutoHub v1.1.0 or later)
+    usage: /huball
     
   tpall:
     description: Teleports all online users except those with the extracommands.dodgetpall permission to specified location
@@ -15,9 +16,11 @@ commands:
     
   kickall:
     description: Kicks all online players except those with the extracommands.dodgekickall permission from the server
+    usage: /kickall <reason>
    
   setspawn:
     description: Sets the spawn location
+    usage: /setspawn
    
   ip:
     description: Gets the IP of a player
@@ -25,18 +28,23 @@ commands:
     
   hideplayers:
     description: Hides all players from sender
+    usage: /hideplayers
   
   showplayers:
     description: Reveals all players from sender
+    usage: /showplayers
     
   killall:
     description: Kills all online players except those with the extracommands.dodgekillall permission
-  
+    usage: /killall
+
   day:
     description: Sets the time to day
+    usage: /day
     
   night:
     description: Sets the time to night
+    usage: /night
     
   clearall:
     description: Clears the inventory of all players except those with the extracommands.dodgeclearall permission
@@ -44,7 +52,7 @@ commands:
     
   giveall:
     description: Gives an item to all players
-    usage: /giveall <item> <amount> (both required)
+    usage: /giveall <item> [amount]
 
 
 permissions:

@@ -2,11 +2,11 @@ package net.twilightdevelopment.plugin.extracommands;
 
 import net.md_5.bungee.api.ChatColor;
 import org.apache.commons.lang.Validate;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.command.*;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.Collections;
+import java.util.List;
 
 public abstract class ExtraCommandExecutor implements CommandExecutor {
   protected final JavaPlugin plugin;
@@ -17,6 +17,7 @@ public abstract class ExtraCommandExecutor implements CommandExecutor {
     Validate.notNull(cmdName);
     this.plugin = plugin;
     this.cmdName = cmdName;
+    plugin.getCommand(cmdName).setTabCompleter((sender, cmd, label, args) -> parseTabComplete(sender, args));
   }
 
   public ExtraCommandExecutor(JavaPlugin plugin) {
@@ -25,10 +26,15 @@ public abstract class ExtraCommandExecutor implements CommandExecutor {
     cmdName = null;
   }
 
+  public ExtraCommandExecutor(JavaPlugin plugin, String cmdName, TabCompleter tabCompleter) {
+    this(plugin, cmdName);
+    plugin.getCommand(cmdName).setTabCompleter(tabCompleter);
+  }
+
   @Override
   public abstract boolean onCommand(CommandSender sender, Command cmd, String label, String[] args);
 
-  protected boolean isEnabled() {
+  protected final boolean isEnabled() {
     return plugin.getConfig().getBoolean("commands." + cmdName);
   }
 
@@ -43,22 +49,22 @@ public abstract class ExtraCommandExecutor implements CommandExecutor {
    * @return True if the sender is a {@link ConsoleCommandSender} or it has the required permission
    *     associated with {@code cmdName}
    */
-  protected boolean checkPerms(CommandSender sender) {
+  protected final boolean checkPerms(CommandSender sender) {
     return sender instanceof ConsoleCommandSender
         || sender.hasPermission("extracommands." + cmdName);
   }
 
-  protected void sendDisabledMessage(CommandSender sender) {
+  protected final void sendDisabledMessage(CommandSender sender) {
     sender.sendMessage(
         ChatColor.translateAlternateColorCodes(
             '&', plugin.getConfig().getString("messages.command-disabled-message")));
   }
 
-  protected void sendNoPermissionMessage(CommandSender sender) {
+  protected final void sendNoPermissionMessage(CommandSender sender) {
     sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
   }
 
-  protected boolean preconditionCheck(CommandSender sender) {
+  protected final boolean preconditionCheck(CommandSender sender) {
     Validate.notNull(sender);
     if (!isEnabled()) {
       sendDisabledMessage(sender);
@@ -70,5 +76,9 @@ public abstract class ExtraCommandExecutor implements CommandExecutor {
     }
 
     return true;
+  }
+
+  protected List<String> parseTabComplete(final CommandSender sender, final String[] args) {
+    return Collections.emptyList();
   }
 }

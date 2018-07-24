@@ -7,6 +7,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.util.StringUtil;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class IP extends ExtraCommandExecutor {
 
@@ -52,5 +57,19 @@ public class IP extends ExtraCommandExecutor {
           ChatColor.translateAlternateColorCodes(
               '&', plugin.getConfig().getString("messages.command-disabled-message")));
     return true;
+  }
+
+  @Override
+  public List<String> parseTabComplete(CommandSender sender, String[] args) {
+    if (args.length == 1) {
+      List<String> result = new ArrayList<>();
+      StringUtil.copyPartialMatches(
+          args[0],
+          ArrayUtil.applyModification(Bukkit.getOnlinePlayers(), Player::getName),
+          result);
+      Collections.sort(result);
+      return result;
+    }
+    return super.parseTabComplete(sender, args);
   }
 }

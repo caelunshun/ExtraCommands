@@ -7,6 +7,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.List;
+
 public class SetSpawn extends ExtraCommandExecutor {
 
   public SetSpawn(JavaPlugin plugin) {
@@ -37,5 +39,10 @@ public class SetSpawn extends ExtraCommandExecutor {
           ChatColor.translateAlternateColorCodes(
               '&', plugin.getConfig().getString("messages.command-disabled-message")));
     return true;
+  }
+
+  @Override
+  protected List<String> parseTabComplete(CommandSender sender, String[] args) {
+    return super.parseTabComplete(sender, args);
   }
 }

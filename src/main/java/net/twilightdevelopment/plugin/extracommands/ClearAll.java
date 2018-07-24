@@ -8,10 +8,17 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Collections;
+
 public class ClearAll extends ExtraCommandExecutor {
 
   public ClearAll(JavaPlugin plugin) {
-    super(plugin);
+    super(
+        plugin,
+        "clearall",
+        (sender, command, alias, args) -> {
+          return Collections.emptyList();
+        });
   }
 
   @Override

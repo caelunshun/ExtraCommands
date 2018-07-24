@@ -3,11 +3,17 @@ package net.twilightdevelopment.plugin.extracommands;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.util.StringUtil;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class TPAll extends ExtraCommandExecutor {
 
@@ -48,10 +54,16 @@ public class TPAll extends ExtraCommandExecutor {
             y = Double.parseDouble(args[1]);
             z = Double.parseDouble(args[2]);
           } catch (NumberFormatException e) {
-            sender.sendMessage(ChatColor.RED + "Usage: /tpall <x> <y> <z> (optional)<world>");
+            sender.sendMessage(ChatColor.RED + "Usage: /tpall <x> <y> <z> [world]");
             failed = true;
           }
           if (!failed) {
+            World world = Bukkit.getWorld(w);
+            if (world == null) {
+              sender.sendMessage(
+                  String.format(ChatColor.RED + "Error: World %s does not exist.", w));
+            }
+
             teleportAll(new Location(Bukkit.getWorld(w), x, y, z));
             sender.sendMessage(ChatColor.GREEN + "Done!");
           } else
@@ -78,5 +90,30 @@ public class TPAll extends ExtraCommandExecutor {
                 '&', plugin.getConfig().getString("messages.tpall-message")));
       }
     }
+  }
+
+  @Override
+  protected List<String> parseTabComplete(CommandSender sender, String[] args) {
+    if (sender instanceof Player) {
+      // Suggest player's current location
+      Player player = (Player) sender;
+      switch (args.length) {
+        case 1:
+          return Collections.singletonList(player.getLocation().getX() + "");
+        case 2:
+          return Collections.singletonList(player.getLocation().getY() + "");
+        case 3:
+          return Collections.singletonList(player.getLocation().getZ() + "");
+      }
+    }
+    if (args.length == 4) {
+      List<String> result = new ArrayList<>();
+      StringUtil.copyPartialMatches(
+          args[3], ArrayUtil.applyModification(Bukkit.getWorlds(), World::getName), result);
+      Collections.sort(result);
+      return result;
+    }
+
+    return super.parseTabComplete(sender, args);
   }
 }
