@@ -1,0 +1,110 @@
+name: ExtraCommands
+main: net.twilightdevelopment.plugin.extracommands.ExtraCommands
+version: v1.1
+author: gzx
+softdepend: [AutoHub]
+
+commands:
+  huball:
+    description: Teleports all users online except those with the extracommands.dodgehuball permission to the hub location/server (requires AutoHub v1.1.0 or later)
+    
+  tpall:
+    description: Teleports all online users except those with the extracommands.dodgetpall permission to specified location
+    usage: /tpall <x> <y> <z> (optional)<world>
+    
+  kickall:
+    description: Kicks all online players except those with the extracommands.dodgekickall permission from the server
+   
+  setspawn:
+    description: Sets the spawn location
+   
+  ip:
+    description: Gets the IP of a player
+    usage: /ip <player>
+    
+  hideplayers:
+    description: Hides all players from sender
+  
+  showplayers:
+    description: Reveals all players from sender
+    
+  killall:
+    description: Kills all online players except those with the extracommands.dodgekillall permission
+  
+  day:
+    description: Sets the time to day
+    
+  night:
+    description: Sets the time to night
+    
+  clearall:
+    description: Clears the inventory of all players except those with the extracommands.dodgeclearall permission
+    usage: /clearall
+    
+  giveall:
+    description: Gives an item to all players
+    usage: /giveall <item> <amount> (both required)
+
+
+permissions:
+  extracommands.huball:
+    default: false
+  
+  extracommands.dodgehuball:
+    default: false
+  
+  extracommands.tpall:
+    default: false
+  
+  extracommands.dodgetpall:
+    default: false
+  
+  extracommands.kickall:
+    default: false
+  
+  extracommands.dodgekickall:
+    default: false
+  
+  extracommands.setspawn:
+    default: false
+    
+  extracommands.ip:
+    default: false
+    
+  extracommands.hideplayers:
+    default: false
+    
+  extracommands.showplayers:
+    default: false
+    
+  extracommands.killall:
+    default: false
+    
+  extracommands.dodgekillall:
+    default: false
+    
+  extracommands.day:
+    default: false
+    
+  extracommands.night:
+    default: false
+    
+  extracommands.clearall:
+    default: false
+    
+  extracommands.dodgeclearall:
+    default: false
+    
+  extracommands.giveall:
+    default: false
+  
+  extracommands.dodgegiveall:
+    default: false
+ 
+    
+ 
+  
+  
+  
+  
+  
