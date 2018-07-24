@@ -1,8 +1,9 @@
 name: ExtraCommands
 main: net.twilightdevelopment.plugin.extracommands.ExtraCommands
-version: v1.1
+version: 1.2
 author: gzx
 softdepend: [AutoHub]
+api-version: 1.13
 
 commands:
   huball:

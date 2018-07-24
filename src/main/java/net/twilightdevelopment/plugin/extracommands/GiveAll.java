@@ -46,12 +46,12 @@ public class GiveAll extends ExtraCommandExecutor {
       }
     }
     ItemStack toGive = new ItemStack(type, amount);
+    String message = ChatColor.translateAlternateColorCodes(
+            '&', plugin.getConfig().getString("messages.giveall-message"));
     for (Player p : Bukkit.getOnlinePlayers()) {
       if (!p.hasPermission("extracommands.dodgegiveall")) {
         p.getInventory().addItem(toGive);
-        p.sendMessage(
-            ChatColor.translateAlternateColorCodes(
-                '&', plugin.getConfig().getString("messages.giveall-message")));
+        p.sendMessage(message);
       }
     }
 
