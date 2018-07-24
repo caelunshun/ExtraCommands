@@ -12,7 +12,7 @@ import java.util.List;
 public class SetSpawn extends ExtraCommandExecutor {
 
   public SetSpawn(JavaPlugin plugin) {
-    super(plugin);
+    super(plugin, "setspawn");
   }
 
   @Override

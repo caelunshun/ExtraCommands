@@ -18,7 +18,7 @@ import java.util.List;
 public class TPAll extends ExtraCommandExecutor {
 
   public TPAll(JavaPlugin plugin) {
-    super(plugin);
+    super(plugin, "tpall");
   }
 
   @Override
@@ -101,9 +101,11 @@ public class TPAll extends ExtraCommandExecutor {
         case 1:
           return Collections.singletonList(player.getLocation().getX() + "");
         case 2:
-          return Collections.singletonList(player.getLocation().getY() + "");
+          return Collections.singletonList(player.getLocation().getBlockY() + "");
         case 3:
           return Collections.singletonList(player.getLocation().getZ() + "");
+        default:
+          break;
       }
     }
     if (args.length == 4) {

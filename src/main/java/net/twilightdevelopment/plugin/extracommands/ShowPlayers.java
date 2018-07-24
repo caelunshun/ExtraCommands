@@ -12,7 +12,7 @@ import java.util.List;
 public class ShowPlayers extends ExtraCommandExecutor {
 
   public ShowPlayers(JavaPlugin plugin) {
-    super(plugin);
+    super(plugin, "showplayers");
   }
 
   @Override

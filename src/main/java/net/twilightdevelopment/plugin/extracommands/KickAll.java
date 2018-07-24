@@ -15,7 +15,7 @@ import java.util.List;
 public class KickAll extends ExtraCommandExecutor {
 
   public KickAll(JavaPlugin plugin) {
-    super(plugin);
+    super(plugin, "kickall");
   }
 
   @Override

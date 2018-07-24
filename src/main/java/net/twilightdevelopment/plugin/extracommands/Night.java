@@ -14,7 +14,7 @@ import java.util.List;
 public class Night extends ExtraCommandExecutor {
 
   public Night(JavaPlugin plugin) {
-    super(plugin);
+    super(plugin, "night");
   }
 
   @Override

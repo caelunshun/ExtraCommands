@@ -16,7 +16,7 @@ import java.util.List;
 public class IP extends ExtraCommandExecutor {
 
   public IP(JavaPlugin plugin) {
-    super(plugin);
+    super(plugin, "ip");
   }
 
   @Override

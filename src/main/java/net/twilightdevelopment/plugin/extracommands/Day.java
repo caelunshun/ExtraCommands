@@ -9,14 +9,10 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Collections;
-
 public class Day extends ExtraCommandExecutor {
 
   public Day(JavaPlugin plugin) {
-    super(plugin, "day", ((commandSender, command, s, strings) -> {
-      return Collections.emptyList();
-    }));
+    super(plugin, "day");
   }
 
   @Override

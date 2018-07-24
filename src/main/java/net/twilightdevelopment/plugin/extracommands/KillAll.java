@@ -13,7 +13,7 @@ import java.util.List;
 public class KillAll extends ExtraCommandExecutor {
 
   public KillAll(JavaPlugin plugin) {
-    super(plugin);
+    super(plugin, "killall");
   }
 
   @Override

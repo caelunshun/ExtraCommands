@@ -12,7 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class HubAll extends net.twilightdevelopment.plugin.extracommands.ExtraCommandExecutor {
 
   public HubAll(JavaPlugin plugin) {
-    super(plugin);
+    super(plugin, "huball");
   }
 
   @Override

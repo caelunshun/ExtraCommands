@@ -10,7 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class HidePlayers extends ExtraCommandExecutor {
 
   public HidePlayers(JavaPlugin plugin) {
-    super(plugin);
+    super(plugin, "hideplayers");
   }
 
   @Override
