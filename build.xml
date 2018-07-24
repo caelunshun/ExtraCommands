@@ -1,20 +1,22 @@
 <project name="ExtraCommands">
-<target name="createJARFile">
-  <mkdir dir="./ExtraCommands/classes"/>
-  <javadoc sourcepath="./ExtraCommands/src" destdir="./ExtraCommands/docs">
-     <classpath> <pathelement location="spigot-api-1.11.2-R0.1-SNAPSHOT-shaded.jar"/>
-    <pathelement location="AutoHub.jar"/>
-    </classpath>
-  </javadoc>
-<javac srcdir="./ExtraCommands/src" destdir ="./ExtraCommands/classes">
-  <classpath> <pathelement location="spigot-api-1.11.2-R0.1-SNAPSHOT-shaded.jar"/> 
-  <pathelement location="AutoHub.jar"/>
-  </classpath>
-  </javac>
-<jar destfile="./ExtraCommands.jar" basedir="./ExtraCommands/classes">
-<fileset file="./ExtraCommands/plugin.yml"/>
-<fileset file="./ExtraCommands/config.yml"/>
-</jar>
-  <jar destfile="ExtraCommands-JavaDoc.jar" basedir="./ExtraCommands/docs"/>
-</target>
+    <target name="createJARFile">
+        <mkdir dir="./ExtraCommands/classes"/>
+        <javadoc sourcepath="./ExtraCommands/src" destdir="./ExtraCommands/docs">
+            <classpath>
+                <pathelement location="spigot-api-1.11.2-R0.1-SNAPSHOT-shaded.jar"/>
+                <pathelement location="AutoHub.jar"/>
+            </classpath>
+        </javadoc>
+        <javac srcdir="./ExtraCommands/src" destdir="./ExtraCommands/classes">
+            <classpath>
+                <pathelement location="spigot-api-1.11.2-R0.1-SNAPSHOT-shaded.jar"/>
+                <pathelement location="AutoHub.jar"/>
+            </classpath>
+        </javac>
+        <jar destfile="./ExtraCommands.jar" basedir="./ExtraCommands/classes">
+            <fileset file="./ExtraCommands/plugin.yml"/>
+            <fileset file="./ExtraCommands/config.yml"/>
+        </jar>
+        <jar destfile="ExtraCommands-JavaDoc.jar" basedir="./ExtraCommands/docs"/>
+    </target>
 </project>

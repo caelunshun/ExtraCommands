@@ -14,8 +14,8 @@ public class ExtraCommands extends JavaPlugin {
     saveDefaultConfig();
 
     if (getConfig().getBoolean("update-checker"))
-      Bukkit.getScheduler().runTaskTimerAsynchronously(this, new ExtraCommandsUpdater(this),
-              0, UPDATER_INTERVAL);
+      Bukkit.getScheduler()
+          .runTaskTimerAsynchronously(this, new ExtraCommandsUpdater(this), 0, UPDATER_INTERVAL);
 
     getCommand("huball").setExecutor(new HubAll(this));
     getCommand("kickall").setExecutor(new KickAll(this));
