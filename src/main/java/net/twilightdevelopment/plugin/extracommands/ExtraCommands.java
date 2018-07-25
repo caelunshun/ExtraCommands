@@ -70,6 +70,8 @@ public class ExtraCommands extends JavaPlugin {
     // Upgrade configuration to add options in newer versions to older configs
     if (!getConfig().contains("affect-command-issuer", true)) {
       for (String cmdName : cmdNames) {
+        if (!cmdName.matches(".*all"))
+          continue;
         String path = "affect-command-issuer." + cmdName;
         getConfig().createSection(path);
         getConfig().set(path, true);
