@@ -1,6 +1,8 @@
-package net.twilightdevelopment.plugin.extracommands;
+package net.twilightdevelopment.plugin.extracommands.commands;
 
 import net.md_5.bungee.api.ChatColor;
+import net.twilightdevelopment.plugin.extracommands.ExtraCommand;
+import net.twilightdevelopment.plugin.extracommands.ExtraCommandExecutor;
 import net.twilightdevelopment.plugin.extracommands.placeholder.PlaceholderUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.World;

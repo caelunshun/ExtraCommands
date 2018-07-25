@@ -1,7 +1,9 @@
-package net.twilightdevelopment.plugin.extracommands;
+package net.twilightdevelopment.plugin.extracommands.commands;
 
 import net.twilightdevelopment.plugin.autohub.API;
 import net.twilightdevelopment.plugin.autohub.AutoHub;
+import net.twilightdevelopment.plugin.extracommands.ExtraCommand;
+import net.twilightdevelopment.plugin.extracommands.ExtraCommandExecutor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;

@@ -2,6 +2,7 @@ package net.twilightdevelopment.plugin.extracommands;
 
 import com.google.common.collect.ImmutableSet;
 import net.twilightdevelopment.plugin.extracommands.autoupdater.ExtraCommandsUpdater;
+import net.twilightdevelopment.plugin.extracommands.commands.*;
 import org.bstats.bukkit.MetricsLite;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;

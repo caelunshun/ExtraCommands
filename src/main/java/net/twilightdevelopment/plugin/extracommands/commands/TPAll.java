@@ -1,6 +1,9 @@
-package net.twilightdevelopment.plugin.extracommands;
+package net.twilightdevelopment.plugin.extracommands.commands;
 
 import com.google.common.collect.ImmutableMap;
+import net.twilightdevelopment.plugin.extracommands.ArrayUtil;
+import net.twilightdevelopment.plugin.extracommands.ExtraCommand;
+import net.twilightdevelopment.plugin.extracommands.ExtraCommandExecutor;
 import net.twilightdevelopment.plugin.extracommands.placeholder.PlaceholderUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
