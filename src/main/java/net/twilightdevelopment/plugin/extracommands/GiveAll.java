@@ -67,7 +67,7 @@ public class GiveAll extends ExtraCommandExecutor {
             '&', plugin.getConfig().getString("messages.giveall-message"));
     for (Player p : Bukkit.getOnlinePlayers()) {
       if (!p.hasPermission("extracommands.dodgegiveall")
-          && (!plugin.getConfig().getBoolean("affect-command-issuer") || !p.equals(sender))) {
+          && (plugin.getConfig().getBoolean("affect-command-issuer.giveall") || !p.equals(sender))) {
         p.getInventory().addItem(toGive);
         p.sendMessage(message);
       }

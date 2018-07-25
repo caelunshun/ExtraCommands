@@ -43,7 +43,7 @@ public class HubAll extends net.twilightdevelopment.plugin.extracommands.ExtraCo
         int people = 0;
         for (Player p : Bukkit.getOnlinePlayers()) {
           if (!p.hasPermission("extracommands.dodgehuball")
-              && (!plugin.getConfig().getBoolean("affect-command-issuer") || !p.equals(sender))) {
+              && (plugin.getConfig().getBoolean("affect-command-issuer.huball") || !p.equals(sender))) {
             done = API.tpToHub(p);
             p.sendMessage(
                 ChatColor.translateAlternateColorCodes(

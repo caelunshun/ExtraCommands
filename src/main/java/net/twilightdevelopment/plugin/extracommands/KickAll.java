@@ -26,7 +26,7 @@ public class KickAll extends ExtraCommandExecutor {
       if (sender instanceof ConsoleCommandSender || sender.hasPermission("extracommands.kickall")) {
         for (Player p : Bukkit.getOnlinePlayers()) {
           if (!p.hasPermission("extracommands.dodgekickall")
-                  && (!plugin.getConfig().getBoolean("affect-command-issuer") || !p.equals(sender))) {
+                  && (plugin.getConfig().getBoolean("affect-command-issuer.kickall") || !p.equals(sender))) {
             p.kickPlayer(
                 ChatColor.translateAlternateColorCodes(
                     '&', plugin.getConfig().getString("messages.default-kickall-message")));
@@ -43,7 +43,7 @@ public class KickAll extends ExtraCommandExecutor {
       if (sender instanceof ConsoleCommandSender || sender.hasPermission("extracommands.kickall")) {
         for (Player p : Bukkit.getOnlinePlayers()) {
           if (!p.hasPermission("extracommands.dodgekickall")
-                  && (!plugin.getConfig().getBoolean("affect-command-issuer") || !p.equals(sender))) {
+                  && (plugin.getConfig().getBoolean("affect-command-issuer.kickall") || !p.equals(sender))) {
             String message = arrayToString(args);
             p.kickPlayer(ChatColor.translateAlternateColorCodes('&', message));
           }

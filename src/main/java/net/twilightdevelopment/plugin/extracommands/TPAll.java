@@ -84,7 +84,7 @@ public class TPAll extends ExtraCommandExecutor {
   private void teleportAll(Location loc, CommandSender sender) {
     for (Player p : Bukkit.getOnlinePlayers()) {
       if (!p.hasPermission("extracommands.dodgetpall")
-              && (!plugin.getConfig().getBoolean("affect-command-issuer") || !p.equals(sender))) {
+              && (plugin.getConfig().getBoolean("affect-command-issuer.tpall") || !p.equals(sender))) {
         p.teleport(loc);
         p.sendMessage(
             ChatColor.translateAlternateColorCodes(

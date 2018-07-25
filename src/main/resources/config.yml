@@ -1,7 +1,19 @@
-# If set to true, the "all" commands will affect the issuer
+# If set to true, the "all" command will affect the issuer
 # of the command as well as everyone else online. If not,
 # the issuer will not be affected.
-affect-command-issuer: true
+affect-command-issuer:
+  huball: true
+  kickall: true
+  tpall: true
+  setspawn: true
+  ip: true
+  hideplayers: true
+  showplayers: true
+  killall: true
+  day: true
+  night: true
+  clearall: true
+  giveall: true
 
 commands:
   huball: true

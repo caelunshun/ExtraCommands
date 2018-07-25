@@ -21,7 +21,7 @@ public class ClearAll extends ExtraCommandExecutor {
         if (args.length == 0) {
           for (Player p : Bukkit.getOnlinePlayers()) {
             if (!p.hasPermission("extracommands.dodgeclearall")
-                && (!plugin.getConfig().getBoolean("affect-command-issuer") || !p.equals(sender))) {
+                && (plugin.getConfig().getBoolean("affect-command-issuer.clearall") || !p.equals(sender))) {
               p.getInventory().clear();
               p.updateInventory();
               p.sendMessage(
