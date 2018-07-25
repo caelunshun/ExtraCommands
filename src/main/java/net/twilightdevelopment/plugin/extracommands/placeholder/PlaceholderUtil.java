@@ -1,6 +1,7 @@
 package net.twilightdevelopment.plugin.extracommands.placeholder;
 
 import net.twilightdevelopment.plugin.extracommands.ExtraCommands;
+import org.apache.commons.lang.Validate;
 
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -8,6 +9,8 @@ import java.util.regex.Pattern;
 
 public class PlaceholderUtil {
   public static String applyPlaceholders(String message, Map<String, String> placeholders) {
+    Validate.notNull(message, "Message cannot be null");
+    Validate.notNull(placeholders, "Placeholder map cannot be null");
     String result = message;
     for (Map.Entry<String, String> entry : placeholders.entrySet()) {
       StringBuffer buffer = new StringBuffer();

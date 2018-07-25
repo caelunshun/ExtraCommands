@@ -58,7 +58,7 @@ messages:
   autohub-required: '&CError: AutoHub is not installed or the hub is not set.'
   must-be-a-player: '&CYou must be a player to execute this command.'
   command-disabled: '&7&lServer&5>> This command is disabled.'
-  
+
   player-not-found: '&CPlayer {player} was not found.'
   world-not-found: '&CWorld {world} was not found.'
 
