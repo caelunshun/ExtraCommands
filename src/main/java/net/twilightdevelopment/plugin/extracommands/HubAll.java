@@ -20,7 +20,8 @@ public class HubAll extends net.twilightdevelopment.plugin.extracommands.ExtraCo
     if (plugin.getConfig().getBoolean("commands.huball")) {
       if (sender.hasPermission("extracommands.huball") || sender instanceof ConsoleCommandSender) {
         if (tpAllToHub(sender)) {
-          sender.sendMessage(ChatColor.GREEN + "Teleported all players to the hub!");
+          sender.sendMessage(ChatColor.translateAlternateColorCodes(
+                  '&', plugin.getConfig().getString("messages.huball-complete")));
         } else
           sender.sendMessage(ChatColor.RED + "Error: Hub not set or AutoHub is not installed.");
       } else

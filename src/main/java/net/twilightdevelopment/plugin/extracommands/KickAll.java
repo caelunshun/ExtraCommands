@@ -1,6 +1,7 @@
 package net.twilightdevelopment.plugin.extracommands;
 
 import net.md_5.bungee.api.ChatColor;
+import net.twilightdevelopment.plugin.extracommands.placeholder.PlaceholderUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -8,7 +9,6 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -26,13 +26,20 @@ public class KickAll extends ExtraCommandExecutor {
       if (sender instanceof ConsoleCommandSender || sender.hasPermission("extracommands.kickall")) {
         for (Player p : Bukkit.getOnlinePlayers()) {
           if (!p.hasPermission("extracommands.dodgekickall")
-                  && (plugin.getConfig().getBoolean("affect-command-issuer.kickall") || !p.equals(sender))) {
+              && (plugin.getConfig().getBoolean("affect-command-issuer.kickall")
+                  || !p.equals(sender))) {
             p.kickPlayer(
                 ChatColor.translateAlternateColorCodes(
                     '&', plugin.getConfig().getString("messages.default-kickall-message")));
           }
         }
-        sender.sendMessage(ChatColor.GREEN + "Done!");
+        sender.sendMessage(
+            ChatColor.translateAlternateColorCodes(
+                '&',
+                PlaceholderUtil.applyPlaceholders(
+                    plugin.getConfig().getString("messages.kickall-complete"),
+                    Collections.emptyMap())));
+
         return true;
       } else
         sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
@@ -43,7 +50,8 @@ public class KickAll extends ExtraCommandExecutor {
       if (sender instanceof ConsoleCommandSender || sender.hasPermission("extracommands.kickall")) {
         for (Player p : Bukkit.getOnlinePlayers()) {
           if (!p.hasPermission("extracommands.dodgekickall")
-                  && (plugin.getConfig().getBoolean("affect-command-issuer.kickall") || !p.equals(sender))) {
+              && (plugin.getConfig().getBoolean("affect-command-issuer.kickall")
+                  || !p.equals(sender))) {
             String message = arrayToString(args);
             p.kickPlayer(ChatColor.translateAlternateColorCodes('&', message));
           }

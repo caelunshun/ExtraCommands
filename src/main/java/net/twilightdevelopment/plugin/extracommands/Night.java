@@ -1,6 +1,7 @@
 package net.twilightdevelopment.plugin.extracommands;
 
 import net.md_5.bungee.api.ChatColor;
+import net.twilightdevelopment.plugin.extracommands.placeholder.PlaceholderUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -9,6 +10,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Night extends ExtraCommandExecutor {
@@ -25,11 +27,11 @@ public class Night extends ExtraCommandExecutor {
 
         World world = player.getWorld();
         world.setFullTime(13000);
-        player.sendMessage(ChatColor.GREEN + "Time set to night!");
+        sendResultMessage(sender);
       } else if (sender instanceof ConsoleCommandSender) {
         World world = Bukkit.getWorld("world");
         world.setFullTime(13000);
-        sender.sendMessage(ChatColor.GREEN + "Time set to night!");
+        sendResultMessage(sender);
       } else
         sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
 
@@ -43,5 +45,13 @@ public class Night extends ExtraCommandExecutor {
   @Override
   protected List<String> parseTabComplete(CommandSender sender, String[] args) {
     return super.parseTabComplete(sender, args);
+  }
+
+  private void sendResultMessage(CommandSender sender) {
+    sender.sendMessage(
+        ChatColor.translateAlternateColorCodes(
+            '&',
+            PlaceholderUtil.applyPlaceholders(
+                plugin.getConfig().getString("messages.night-complete"), Collections.emptyMap())));
   }
 }

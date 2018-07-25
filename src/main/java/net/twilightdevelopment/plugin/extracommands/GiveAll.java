@@ -1,7 +1,9 @@
 package net.twilightdevelopment.plugin.extracommands;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import net.md_5.bungee.api.ChatColor;
+import net.twilightdevelopment.plugin.extracommands.placeholder.PlaceholderUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -67,13 +69,19 @@ public class GiveAll extends ExtraCommandExecutor {
             '&', plugin.getConfig().getString("messages.giveall-message"));
     for (Player p : Bukkit.getOnlinePlayers()) {
       if (!p.hasPermission("extracommands.dodgegiveall")
-          && (plugin.getConfig().getBoolean("affect-command-issuer.giveall") || !p.equals(sender))) {
+          && (plugin.getConfig().getBoolean("affect-command-issuer.giveall")
+              || !p.equals(sender))) {
         p.getInventory().addItem(toGive);
         p.sendMessage(message);
       }
     }
 
-    sender.sendMessage(ChatColor.GREEN + "Done!");
+    sender.sendMessage(
+        ChatColor.translateAlternateColorCodes(
+            '&',
+            PlaceholderUtil.applyPlaceholders(
+                plugin.getConfig().getString("messages.giveall-complete"),
+                ImmutableMap.of("item", type.name().toLowerCase(), "amount", amount + ""))));
 
     return true;
   }

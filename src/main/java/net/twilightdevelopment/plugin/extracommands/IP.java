@@ -1,6 +1,8 @@
 package net.twilightdevelopment.plugin.extracommands;
 
+import com.google.common.collect.ImmutableMap;
 import net.md_5.bungee.api.ChatColor;
+import net.twilightdevelopment.plugin.extracommands.placeholder.PlaceholderUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -37,13 +39,11 @@ public class IP extends ExtraCommandExecutor {
           if (victim != null) {
             String address = victim.getAddress().getHostName();
             sender.sendMessage(
-                ChatColor.AQUA
-                    + "Player "
-                    + victim.getName()
-                    + "'s IP address is "
-                    + ChatColor.DARK_AQUA
-                    + address
-                    + ".");
+                ChatColor.translateAlternateColorCodes(
+                    '&',
+                    PlaceholderUtil.applyPlaceholders(
+                        plugin.getConfig().getString("messages.ip-complete"),
+                        ImmutableMap.of("player", victim.getName(), "ip", address))));
           } else {
             String victimName = args[0];
             sender.sendMessage(ChatColor.RED + "Player " + victimName + " not found.");
@@ -64,9 +64,7 @@ public class IP extends ExtraCommandExecutor {
     if (args.length == 1) {
       List<String> result = new ArrayList<>();
       StringUtil.copyPartialMatches(
-          args[0],
-          ArrayUtil.applyModification(Bukkit.getOnlinePlayers(), Player::getName),
-          result);
+          args[0], ArrayUtil.applyModification(Bukkit.getOnlinePlayers(), Player::getName), result);
       Collections.sort(result);
       return result;
     }

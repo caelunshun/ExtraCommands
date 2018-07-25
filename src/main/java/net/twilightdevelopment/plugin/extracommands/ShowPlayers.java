@@ -1,12 +1,14 @@
 package net.twilightdevelopment.plugin.extracommands;
 
 import net.md_5.bungee.api.ChatColor;
+import net.twilightdevelopment.plugin.extracommands.placeholder.PlaceholderUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ShowPlayers extends ExtraCommandExecutor {
@@ -24,7 +26,12 @@ public class ShowPlayers extends ExtraCommandExecutor {
           for (Player p : Bukkit.getOnlinePlayers()) {
             player.showPlayer(plugin, p);
           }
-          player.sendMessage(ChatColor.GREEN + "Players shown!");
+          sender.sendMessage(
+              ChatColor.translateAlternateColorCodes(
+                  '&',
+                  PlaceholderUtil.applyPlaceholders(
+                      plugin.getConfig().getString("messages.showplayers-complete"),
+                      Collections.emptyMap())));
         } else
           sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
       } else sender.sendMessage(ChatColor.RED + "This command must be executed by a player.");

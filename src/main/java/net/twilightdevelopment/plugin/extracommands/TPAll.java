@@ -1,5 +1,6 @@
 package net.twilightdevelopment.plugin.extracommands;
 
+import net.twilightdevelopment.plugin.extracommands.placeholder.PlaceholderUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -40,7 +41,12 @@ public class TPAll extends ExtraCommandExecutor {
           }
           if (failed == false) {
             teleportAll(new Location(Bukkit.getWorld("world"), x, y, z), sender);
-            sender.sendMessage(ChatColor.GREEN + "Done!");
+            sender.sendMessage(
+                ChatColor.translateAlternateColorCodes(
+                    '&',
+                    PlaceholderUtil.applyPlaceholders(
+                        plugin.getConfig().getString("messages.day-complete"),
+                        Collections.emptyMap())));
           }
 
         } else if (args.length == 4) {
@@ -84,7 +90,7 @@ public class TPAll extends ExtraCommandExecutor {
   private void teleportAll(Location loc, CommandSender sender) {
     for (Player p : Bukkit.getOnlinePlayers()) {
       if (!p.hasPermission("extracommands.dodgetpall")
-              && (plugin.getConfig().getBoolean("affect-command-issuer.tpall") || !p.equals(sender))) {
+          && (plugin.getConfig().getBoolean("affect-command-issuer.tpall") || !p.equals(sender))) {
         p.teleport(loc);
         p.sendMessage(
             ChatColor.translateAlternateColorCodes(

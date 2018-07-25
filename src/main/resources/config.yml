@@ -29,6 +29,19 @@ messages:
   giveall-message: '&7&lServer&5>> &b&lYou received an item!'
   command-disabled-message: '&7&lServer&5>> This command is disabled.'
 
+  clearall-complete: '&7&lServer&5>> &7Cleared inventory of all players.'
+  day-complete: '&7&lServer&5>> &7Time set to day.'
+  giveall-complete: '&7&lServer&5>> &7Given all players {amount} of {type}.'
+  hideplayers-complete: '&7&lServer&5>> &7Hidden players from your view.'
+  huball-complete: '&7&lServer&5>> &7All players teleported to the hub.'
+  ip-complete: '&7&lServer&5>> &7The IP address of &b{player} &7is &b{ip}&7.'
+  kickall-complete: '&7&lServer&5>> &7Kicked all players.'
+  killall-complete: '&7&lServer&5>> &7Killed all players.'
+  night-complete: '&7&lServer&5>> &7Time set to night.'
+  setspawn-complete: '&7&lServer&5>> &7Spawn set to your position.'
+  showplayers-complete: '&7&lServer&5>> &7You can now see players.'
+  tpall-complete: '&7&lServer&5>> &7Teleported all players.'
+
 update-checker: true
   
   
