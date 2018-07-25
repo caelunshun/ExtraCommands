@@ -31,7 +31,7 @@ messages:
 
   clearall-complete: '&7&lServer&5>> &7Cleared inventory of all players.'
   day-complete: '&7&lServer&5>> &7Time set to day.'
-  giveall-complete: '&7&lServer&5>> &7Given all players {amount} of {type}.'
+  giveall-complete: '&7&lServer&5>> &7Given all players {amount} of {item}.'
   hideplayers-complete: '&7&lServer&5>> &7Hidden players from your view.'
   huball-complete: '&7&lServer&5>> &7All players teleported to the hub.'
   ip-complete: '&7&lServer&5>> &7The IP address of &b{player} &7is &b{ip}&7.'
@@ -41,6 +41,8 @@ messages:
   setspawn-complete: '&7&lServer&5>> &7Spawn set to your position.'
   showplayers-complete: '&7&lServer&5>> &7You can now see players.'
   tpall-complete: '&7&lServer&5>> &7Teleported all players.'
+
+  no-permission: '&5You do not have access to that command.'
 
 update-checker: true
   

@@ -33,12 +33,7 @@ public class KickAll extends ExtraCommandExecutor {
                     '&', plugin.getConfig().getString("messages.default-kickall-message")));
           }
         }
-        sender.sendMessage(
-            ChatColor.translateAlternateColorCodes(
-                '&',
-                PlaceholderUtil.applyPlaceholders(
-                    plugin.getConfig().getString("messages.kickall-complete"),
-                    Collections.emptyMap())));
+        sendSuccess(sender);
 
         return true;
       } else
@@ -56,7 +51,7 @@ public class KickAll extends ExtraCommandExecutor {
             p.kickPlayer(ChatColor.translateAlternateColorCodes('&', message));
           }
         }
-        sender.sendMessage(ChatColor.GREEN + "Done!");
+        sendSuccess(sender);
 
       } else
         sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");

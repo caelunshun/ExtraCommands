@@ -1,12 +1,16 @@
 package net.twilightdevelopment.plugin.extracommands;
 
+import com.google.common.collect.ImmutableMap;
 import net.md_5.bungee.api.ChatColor;
+import net.twilightdevelopment.plugin.extracommands.placeholder.PlaceholderUtil;
 import org.apache.commons.lang.Validate;
 import org.bukkit.command.*;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public abstract class ExtraCommandExecutor implements CommandExecutor {
   protected final JavaPlugin plugin;
@@ -17,7 +21,9 @@ public abstract class ExtraCommandExecutor implements CommandExecutor {
     Validate.notNull(cmdName);
     this.plugin = plugin;
     this.cmdName = cmdName;
-    plugin.getCommand(cmdName).setTabCompleter((sender, cmd, label, args) -> parseTabComplete(sender, args));
+    plugin
+        .getCommand(cmdName)
+        .setTabCompleter((sender, cmd, label, args) -> parseTabComplete(sender, args));
   }
 
   public ExtraCommandExecutor(JavaPlugin plugin) {
@@ -61,7 +67,9 @@ public abstract class ExtraCommandExecutor implements CommandExecutor {
   }
 
   protected final void sendNoPermissionMessage(CommandSender sender) {
-    sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
+    sender.sendMessage(
+        ChatColor.translateAlternateColorCodes(
+            '&', plugin.getConfig().getString("messages.no-permission")));
   }
 
   protected final boolean preconditionCheck(CommandSender sender) {
@@ -78,7 +86,24 @@ public abstract class ExtraCommandExecutor implements CommandExecutor {
     return true;
   }
 
+  protected final boolean dodgeCheck(Player player, CommandSender sender) {
+    if (player.hasPermission("extracommands.dodge" + cmdName)) return false;
+    return plugin.getConfig().getBoolean("affect-command-issuer.giveall") || !player.equals(sender);
+  }
+
   protected List<String> parseTabComplete(final CommandSender sender, final String[] args) {
     return Collections.emptyList();
+  }
+
+  protected void sendSuccess(CommandSender sender, Map<String, String> placeholders) {
+    sender.sendMessage(
+        ChatColor.translateAlternateColorCodes(
+            '&',
+            PlaceholderUtil.applyPlaceholders(
+                plugin.getConfig().getString("messages." + cmdName + "-complete"), placeholders)));
+  }
+
+  protected void sendSuccess(CommandSender sender) {
+    sendSuccess(sender, ImmutableMap.of());
   }
 }

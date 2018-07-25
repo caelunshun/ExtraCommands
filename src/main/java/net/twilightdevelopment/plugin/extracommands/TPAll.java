@@ -45,7 +45,7 @@ public class TPAll extends ExtraCommandExecutor {
                 ChatColor.translateAlternateColorCodes(
                     '&',
                     PlaceholderUtil.applyPlaceholders(
-                        plugin.getConfig().getString("messages.day-complete"),
+                        plugin.getConfig().getString("messages.tpall-complete"),
                         Collections.emptyMap())));
           }
 
