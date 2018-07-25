@@ -1,13 +1,12 @@
 package net.twilightdevelopment.plugin.extracommands;
 
+import com.google.common.collect.ImmutableMap;
 import net.twilightdevelopment.plugin.extracommands.placeholder.PlaceholderUtil;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.StringUtil;
@@ -23,80 +22,44 @@ public class TPAll extends ExtraCommandExecutor {
   }
 
   @Override
-  public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-    if (cmd.getName().equalsIgnoreCase("tpall")
-        && plugin.getConfig().getBoolean("commands.tpall")) {
-      if (sender.hasPermission("extracommands.tpall") || sender instanceof ConsoleCommandSender) {
-        if (args.length == 3) {
-          double x = 0;
-          double y = 0;
-          double z = 0;
-          boolean failed = false;
-          try {
-            x = Double.parseDouble(args[0]);
-            y = Double.parseDouble(args[1]);
-            z = Double.parseDouble(args[2]);
-          } catch (NumberFormatException e) {
-            failed = true;
-          }
-          if (failed == false) {
-            teleportAll(new Location(Bukkit.getWorld("world"), x, y, z), sender);
-            sender.sendMessage(
-                ChatColor.translateAlternateColorCodes(
-                    '&',
-                    PlaceholderUtil.applyPlaceholders(
-                        plugin.getConfig().getString("messages.tpall-complete"),
-                        Collections.emptyMap())));
-          }
+  public boolean execute(ExtraCommand cmd, CommandSender sender, String[] args) {
+    int x;
+    int y;
+    int z;
+    World world = Bukkit.getWorld("world");
+    if (args.length < 3) {
+      sendUsage(sender);
+      return false;
+    }
 
-        } else if (args.length == 4) {
-          double x = 0;
-          double y = 0;
-          double z = 0;
-          String w = args[3];
-          boolean failed = false;
-          try {
-            x = Double.parseDouble(args[0]);
-            y = Double.parseDouble(args[1]);
-            z = Double.parseDouble(args[2]);
-          } catch (NumberFormatException e) {
-            sender.sendMessage(ChatColor.RED + "Usage: /tpall <x> <y> <z> [world]");
-            failed = true;
-          }
-          if (!failed) {
-            World world = Bukkit.getWorld(w);
-            if (world == null) {
-              sender.sendMessage(
-                  String.format(ChatColor.RED + "Error: World %s does not exist.", w));
-            }
+    try {
+      x = Integer.valueOf(args[0]);
+      y = Integer.valueOf(args[1]);
+      z = Integer.valueOf(args[2]);
+    } catch (NumberFormatException e) {
+      sendUsage(sender);
+      return false;
+    }
 
-            teleportAll(new Location(Bukkit.getWorld(w), x, y, z), sender);
-            sender.sendMessage(ChatColor.GREEN + "Done!");
-          } else
-            sender.sendMessage(
-                ChatColor.RED + "Incorrect usage of command. Usage: /tpall <x> <y> <z>");
-        }
-
-      } else
-        sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
-
-    } else
-      sender.sendMessage(
-          ChatColor.translateAlternateColorCodes(
-              '&', plugin.getConfig().getString("messages.command-disabled-message")));
-    return true;
-  }
-
-  private void teleportAll(Location loc, CommandSender sender) {
-    for (Player p : Bukkit.getOnlinePlayers()) {
-      if (!p.hasPermission("extracommands.dodgetpall")
-          && (plugin.getConfig().getBoolean("affect-command-issuer.tpall") || !p.equals(sender))) {
-        p.teleport(loc);
-        p.sendMessage(
-            ChatColor.translateAlternateColorCodes(
-                '&', plugin.getConfig().getString("messages.tpall-message")));
+    if (args.length >= 4) {
+      world = Bukkit.getWorld(args[3]);
+      if (world == null) {
+        sender.sendMessage(
+            PlaceholderUtil.applyPlaceholders(
+                plugin.getConfig().getString("messages.world-not-found"),
+                ImmutableMap.of("world", args[3])));
+        return false;
       }
     }
+
+    Location location = new Location(world, x, y, z);
+    for (Player p : Bukkit.getOnlinePlayers()) {
+      if (dodgeCheck(p, sender)) {
+        p.teleport(location);
+      }
+    }
+
+    return true;
   }
 
   @Override

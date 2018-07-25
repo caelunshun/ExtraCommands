@@ -19,27 +19,13 @@ public class Day extends ExtraCommandExecutor {
   }
 
   @Override
-  public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-    if (plugin.getConfig().getBoolean("commands.day")) {
-      if (sender.hasPermission("extracommands.day") && sender instanceof Player) {
-        Player player = (Player) sender;
+  protected boolean execute(ExtraCommand cmd, CommandSender sender, String[] args) {
+    World target = null;
+    if (sender instanceof Player) {
+      target = ((Player) sender).getWorld();
+    } else target = Bukkit.getWorld("world");
 
-        World world = player.getWorld();
-        world.setFullTime(1000);
-        sendResultMessage(sender);
-
-      } else if (sender instanceof ConsoleCommandSender) {
-        World world = Bukkit.getWorld("world");
-        world.setFullTime(1000);
-        sendResultMessage(sender);
-
-      } else if (!sender.hasPermission("extracommands.day"))
-        sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
-
-    } else
-      sender.sendMessage(
-          ChatColor.translateAlternateColorCodes(
-              '&', plugin.getConfig().getString("messages.command-disabled-message")));
+    target.setTime(1000);
     return true;
   }
 

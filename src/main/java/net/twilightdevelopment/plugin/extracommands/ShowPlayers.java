@@ -18,28 +18,12 @@ public class ShowPlayers extends ExtraCommandExecutor {
   }
 
   @Override
-  public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-    if (plugin.getConfig().getBoolean("commands.showplayers")) {
-      if (sender instanceof Player) {
-        if (sender.hasPermission("extracommands.showplayers")) {
-          Player player = (Player) sender;
-          for (Player p : Bukkit.getOnlinePlayers()) {
-            player.showPlayer(plugin, p);
-          }
-          sender.sendMessage(
-              ChatColor.translateAlternateColorCodes(
-                  '&',
-                  PlaceholderUtil.applyPlaceholders(
-                      plugin.getConfig().getString("messages.showplayers-complete"),
-                      Collections.emptyMap())));
-        } else
-          sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
-      } else sender.sendMessage(ChatColor.RED + "This command must be executed by a player.");
-
-    } else
-      sender.sendMessage(
-          ChatColor.translateAlternateColorCodes(
-              '&', plugin.getConfig().getString("messages.command-disabled-message")));
+  public boolean execute(ExtraCommand cmd, CommandSender sender, String[] args) {
+    if (!checkPlayer(sender))
+      sendPlayerRequired(sender);
+    for (Player p : Bukkit.getOnlinePlayers()) {
+      ((Player) sender).showPlayer(plugin, p);
+    }
     return true;
   }
 

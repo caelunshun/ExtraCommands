@@ -14,19 +14,13 @@ public class ClearAll extends ExtraCommandExecutor {
   }
 
   @Override
-  public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-    if (!preconditionCheck(sender)) return true;
-
+  protected boolean execute(ExtraCommand cmd, CommandSender sender, String[] args) {
     for (Player p : Bukkit.getOnlinePlayers()) {
       if (dodgeCheck(p, sender)) {
         p.getInventory().clear();
-        p.sendMessage(
-            ChatColor.translateAlternateColorCodes(
-                '&', plugin.getConfig().getString("messages.clearall-message")));
+        sendActionedMessage(p);
       }
     }
-
-    sendSuccess(sender);
     return true;
   }
 }

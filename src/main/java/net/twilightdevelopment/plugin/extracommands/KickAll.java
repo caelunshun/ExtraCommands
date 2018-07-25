@@ -1,11 +1,8 @@
 package net.twilightdevelopment.plugin.extracommands;
 
 import net.md_5.bungee.api.ChatColor;
-import net.twilightdevelopment.plugin.extracommands.placeholder.PlaceholderUtil;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -19,47 +16,17 @@ public class KickAll extends ExtraCommandExecutor {
   }
 
   @Override
-  public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-    if (cmd.getName().equalsIgnoreCase("kickall")
-        && plugin.getConfig().getBoolean("commands.kickall")
-        && args.length == 0) {
-      if (sender instanceof ConsoleCommandSender || sender.hasPermission("extracommands.kickall")) {
-        for (Player p : Bukkit.getOnlinePlayers()) {
-          if (!p.hasPermission("extracommands.dodgekickall")
-              && (plugin.getConfig().getBoolean("affect-command-issuer.kickall")
-                  || !p.equals(sender))) {
-            p.kickPlayer(
-                ChatColor.translateAlternateColorCodes(
-                    '&', plugin.getConfig().getString("messages.default-kickall-message")));
-          }
-        }
-        sendSuccess(sender);
-
-        return true;
-      } else
-        sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
-
-    } else if (cmd.getName().equalsIgnoreCase("kickall")
-        && plugin.getConfig().getBoolean("commands.kickall")
-        && args.length >= 1) {
-      if (sender instanceof ConsoleCommandSender || sender.hasPermission("extracommands.kickall")) {
-        for (Player p : Bukkit.getOnlinePlayers()) {
-          if (!p.hasPermission("extracommands.dodgekickall")
-              && (plugin.getConfig().getBoolean("affect-command-issuer.kickall")
-                  || !p.equals(sender))) {
-            String message = arrayToString(args);
-            p.kickPlayer(ChatColor.translateAlternateColorCodes('&', message));
-          }
-        }
-        sendSuccess(sender);
-
-      } else
-        sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
-
-    } else
-      sender.sendMessage(
+  public boolean execute(ExtraCommand cmd, CommandSender sender, String[] args) {
+    String reason;
+    if (args.length == 0) {
+      reason =
           ChatColor.translateAlternateColorCodes(
-              '&', plugin.getConfig().getString("messages.command-disabled-message")));
+              '&', plugin.getConfig().getString("messages.default-kickall"));
+    } else reason = arrayToString(args);
+
+    for (Player p : Bukkit.getOnlinePlayers()) {
+      if (dodgeCheck(p, sender)) p.kickPlayer(reason);
+    }
     return true;
   }
 

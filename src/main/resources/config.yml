@@ -21,13 +21,13 @@ commands:
   giveall: true
   
 messages:
-  huball-message: '&7&lServer&5>> &b&lYou have been telported to the lobby!'
-  default-kickall-message: '&7&lServer&5>> &b&lYou have been kicked!'
-  tpall-message: '&7&lServer&5>> &b&lYou have been teleported!'
-  killall-message: '&7&lServer&5>> &b&lYou were killed!'
-  clearall-message: '&7&lServer&5>> &b&lYour inventory has been cleared!'
-  giveall-message: '&7&lServer&5>> &b&lYou received an item!'
-  command-disabled-message: '&7&lServer&5>> This command is disabled.'
+  huball: '&7&lServer&5>> &b&lYou have been teleported to the lobby!'
+  default-kickall: '&7&lServer&5>> &b&lYou have been kicked!'
+  tpall: '&7&lServer&5>> &b&lYou have been teleported!'
+  killall: '&7&lServer&5>> &b&lYou were killed!'
+  clearall: '&7&lServer&5>> &b&lYour inventory has been cleared!'
+  giveall: '&7&lServer&5>> &b&lYou received an item!'
+  command-disabled: '&7&lServer&5>> This command is disabled.'
 
   clearall-complete: '&7&lServer&5>> &7Cleared inventory of all players.'
   day-complete: '&7&lServer&5>> &7Time set to day.'
@@ -42,7 +42,27 @@ messages:
   showplayers-complete: '&7&lServer&5>> &7You can now see players.'
   tpall-complete: '&7&lServer&5>> &7Teleported all players.'
 
-  no-permission: '&5You do not have access to that command.'
+  clearall-usage: '&CUsage: /clearall'
+  day-usage: '&CUsage: /day'
+  giveall-usage: '&CUsage: /giveall <item> [amount]'
+  hideplayers-usage: '&CUsage: /hideplayers'
+  huball-usage: '&CUsage: /huball'
+  ip-usage: '&CUsage: /ip <player>'
+  kickall-usage: '&CUsage: /kickall <reason>'
+  killall-usage: '&CUsage: /killall'
+  night-usage: '&CUsage: /day'
+  setspawn-usage: '&CUsage: /setspawn'
+  showplayers-usage: '&CUsage: /showplayers'
+  tpall-usage: '&CUsage: /tpall <x> <y> <z> [world]'
+
+  no-permission: '&4You do not have access to that command.'
+
+  autohub-required: '&CError: AutoHub is not installed or the hub is not set.'
+
+  must-be-a-player: '&CYou must be a player to execute this command.'
+
+  player-not-found: '&CPlayer {player} was not found.'
+  world-not-found: '&CWorld {world} was not found.'
 
 update-checker: true
   

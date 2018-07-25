@@ -18,33 +18,13 @@ public class SetSpawn extends ExtraCommandExecutor {
   }
 
   @Override
-  public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-    if (cmd.getName().equalsIgnoreCase("setspawn")
-        && plugin.getConfig().getBoolean("commands.setspawn")) {
-      if (sender instanceof Player) {
-        if (sender.hasPermission("extracommands.setspawn")) {
-          Player player = (Player) sender;
-          World w = player.getWorld();
+  public boolean execute(ExtraCommand cmd, CommandSender sender, String[] args) {
+    if (!checkPlayer(sender)) {
+      sendPlayerRequired(sender);
+      return false;
+    }
 
-          w.setSpawnLocation(
-              (int) player.getLocation().getX(),
-              (int) player.getLocation().getY(),
-              (int) player.getLocation().getZ());
-          sender.sendMessage(
-              ChatColor.translateAlternateColorCodes(
-                  '&',
-                  PlaceholderUtil.applyPlaceholders(
-                      plugin.getConfig().getString("messages.setspawn-complete"),
-                      Collections.emptyMap())));
-        } else
-          sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
-
-      } else sender.sendMessage("You must be a player to execute this command.");
-
-    } else
-      sender.sendMessage(
-          ChatColor.translateAlternateColorCodes(
-              '&', plugin.getConfig().getString("messages.command-disabled-message")));
+    ((Player) sender).getWorld().setSpawnLocation(((Player) sender).getLocation());
     return true;
   }
 

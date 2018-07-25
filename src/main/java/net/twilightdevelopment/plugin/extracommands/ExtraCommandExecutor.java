@@ -37,10 +37,7 @@ public abstract class ExtraCommandExecutor implements CommandExecutor {
     plugin.getCommand(cmdName).setTabCompleter(tabCompleter);
   }
 
-  @Override
-  public abstract boolean onCommand(CommandSender sender, Command cmd, String label, String[] args);
-
-  protected final boolean isEnabled() {
+  private final boolean isEnabled() {
     return plugin.getConfig().getBoolean("commands." + cmdName);
   }
 
@@ -55,24 +52,24 @@ public abstract class ExtraCommandExecutor implements CommandExecutor {
    * @return True if the sender is a {@link ConsoleCommandSender} or it has the required permission
    *     associated with {@code cmdName}
    */
-  protected final boolean checkPerms(CommandSender sender) {
+  private final boolean checkPerms(CommandSender sender) {
     return sender instanceof ConsoleCommandSender
         || sender.hasPermission("extracommands." + cmdName);
   }
 
-  protected final void sendDisabledMessage(CommandSender sender) {
+  private final void sendDisabledMessage(CommandSender sender) {
     sender.sendMessage(
         ChatColor.translateAlternateColorCodes(
             '&', plugin.getConfig().getString("messages.command-disabled-message")));
   }
 
-  protected final void sendNoPermissionMessage(CommandSender sender) {
+  private final void sendNoPermissionMessage(CommandSender sender) {
     sender.sendMessage(
         ChatColor.translateAlternateColorCodes(
             '&', plugin.getConfig().getString("messages.no-permission")));
   }
 
-  protected final boolean preconditionCheck(CommandSender sender) {
+  private final boolean preconditionCheck(CommandSender sender) {
     Validate.notNull(sender);
     if (!isEnabled()) {
       sendDisabledMessage(sender);
@@ -86,16 +83,11 @@ public abstract class ExtraCommandExecutor implements CommandExecutor {
     return true;
   }
 
-  protected final boolean dodgeCheck(Player player, CommandSender sender) {
-    if (player.hasPermission("extracommands.dodge" + cmdName)) return false;
-    return plugin.getConfig().getBoolean("affect-command-issuer.giveall") || !player.equals(sender);
-  }
-
   protected List<String> parseTabComplete(final CommandSender sender, final String[] args) {
     return Collections.emptyList();
   }
 
-  protected void sendSuccess(CommandSender sender, Map<String, String> placeholders) {
+  private void sendSuccess(CommandSender sender, Map<String, String> placeholders) {
     sender.sendMessage(
         ChatColor.translateAlternateColorCodes(
             '&',
@@ -103,7 +95,54 @@ public abstract class ExtraCommandExecutor implements CommandExecutor {
                 plugin.getConfig().getString("messages." + cmdName + "-complete"), placeholders)));
   }
 
-  protected void sendSuccess(CommandSender sender) {
+  private void sendSuccess(CommandSender sender) {
     sendSuccess(sender, ImmutableMap.of());
+  }
+
+  protected final boolean dodgeCheck(Player player, CommandSender sender) {
+    if (player.hasPermission("extracommands.dodge" + cmdName)) return false;
+    return plugin.getConfig().getBoolean("affect-command-issuer.giveall") || !player.equals(sender);
+  }
+
+  /**
+   * Sends an action message (e.g. "You have been teleported") to the specified player.
+   *
+   * @param player The player to send the message to
+   */
+  protected final void sendActionedMessage(Player player) {
+    player.sendMessage(
+        ChatColor.translateAlternateColorCodes(
+            '&', plugin.getConfig().getString("messages." + cmdName)));
+  }
+
+  protected final void sendUsage(CommandSender sender) {
+    sender.sendMessage(
+        ChatColor.translateAlternateColorCodes(
+            '&', plugin.getConfig().getString("messages." + cmdName + "-usage")));
+  }
+
+  protected final boolean checkPlayer(CommandSender sender) {
+    return sender instanceof Player;
+  }
+
+  protected final void sendPlayerRequired(CommandSender sender) {
+    sender.sendMessage(
+        plugin
+            .getConfig()
+            .getString(ChatColor.translateAlternateColorCodes('&', "messages.must-be-player")));
+  }
+
+  protected abstract boolean execute(ExtraCommand cmd, CommandSender sender, String[] args);
+
+  @Override
+  public final boolean onCommand(
+      CommandSender sender, Command command, String label, String[] args) {
+    if (!preconditionCheck(sender)) return true;
+
+    ExtraCommand cmd = new ExtraCommand();
+
+    if (execute(cmd, sender, args)) sendSuccess(sender, cmd.getPlaceholders());
+
+    return true;
   }
 }

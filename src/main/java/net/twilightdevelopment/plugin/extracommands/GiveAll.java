@@ -6,7 +6,6 @@ import net.md_5.bungee.api.ChatColor;
 import net.twilightdevelopment.plugin.extracommands.placeholder.PlaceholderUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -34,55 +33,37 @@ public class GiveAll extends ExtraCommandExecutor {
   }
 
   @Override
-  public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-    if (!preconditionCheck(sender)) return true;
-
+  public boolean execute(ExtraCommand cmd, CommandSender sender, String[] args) {
     int amount = 1;
     Material type = null;
-    if (args.length == 0 || args.length > 2) {
-      sender.sendMessage(ChatColor.RED + "Usage: /giveall <type> [amount]");
-      return true;
+    if (args.length == 0) {
+      sendUsage(sender);
+      return false;
     }
-    if (args.length == 1) {
-      type = Material.matchMaterial(args[0]);
-      if (type == null) {
-        sender.sendMessage(String.format(ChatColor.RED + "Item type %s not found!", args[0]));
-        return true;
-      }
-    } else if (args.length == 2) {
-      type = Material.matchMaterial(args[0]);
-      if (type == null) {
-        sender.sendMessage(String.format(ChatColor.RED + "Item type %s not found!", args[0]));
-        return true;
-      }
-
+    type = Material.matchMaterial(args[0]);
+    if (type == null) {
+      sender.sendMessage(String.format(ChatColor.RED + "Item type %s not found!", args[0]));
+      return false;
+    }
+    if (args.length == 2) {
       try {
         amount = Integer.parseInt(args[1]);
       } catch (NumberFormatException e) {
-        sender.sendMessage(ChatColor.RED + "Usage: /giveall <type> [amount]");
-        return true;
+        sendUsage(sender);
+        return false;
       }
     }
+
     ItemStack toGive = new ItemStack(type, amount);
-    String message =
-        ChatColor.translateAlternateColorCodes(
-            '&', plugin.getConfig().getString("messages.giveall-message"));
     for (Player p : Bukkit.getOnlinePlayers()) {
-      if (!p.hasPermission("extracommands.dodgegiveall")
-          && (plugin.getConfig().getBoolean("affect-command-issuer.giveall")
-              || !p.equals(sender))) {
+      if (dodgeCheck(p, sender)) {
         p.getInventory().addItem(toGive);
-        p.sendMessage(message);
+        sendActionedMessage(p);
       }
     }
 
-    sender.sendMessage(
-        ChatColor.translateAlternateColorCodes(
-            '&',
-            PlaceholderUtil.applyPlaceholders(
-                plugin.getConfig().getString("messages.giveall-complete"),
-                ImmutableMap.of("item", type.name().toLowerCase(), "amount", amount + ""))));
-
+    cmd.placeholder("item", type.name().toLowerCase());
+    cmd.placeholder("amount", amount + "");
     return true;
   }
 

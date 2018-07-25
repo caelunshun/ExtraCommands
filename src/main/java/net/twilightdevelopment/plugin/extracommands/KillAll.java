@@ -19,31 +19,13 @@ public class KillAll extends ExtraCommandExecutor {
   }
 
   @Override
-  public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-    if (plugin.getConfig().getBoolean("commands.killall")) {
-      if (sender.hasPermission("extracommands.killall") || sender instanceof ConsoleCommandSender) {
-        for (Player p : Bukkit.getOnlinePlayers()) {
-          if (!p.hasPermission("extracommands.dodgekillall")
-                  && (plugin.getConfig().getBoolean("affect-command-issuer.killall") || !p.equals(sender))) {
-            p.setHealth(0);
-            p.sendMessage(
-                ChatColor.translateAlternateColorCodes(
-                    '&', plugin.getConfig().getString("messages.killall-message")));
-          }
-        }
-        sender.sendMessage(
-                ChatColor.translateAlternateColorCodes(
-                        '&',
-                        PlaceholderUtil.applyPlaceholders(
-                                plugin.getConfig().getString("messages.killall-complete"), Collections.emptyMap())));
-      } else
-        sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
-
-    } else
-      sender.sendMessage(
-          ChatColor.translateAlternateColorCodes(
-              '&', plugin.getConfig().getString("messages.command-disabled-message")));
-
+  public boolean execute(ExtraCommand cmd, CommandSender sender, String[] args) {
+    for (Player p : Bukkit.getOnlinePlayers()) {
+      if (dodgeCheck(p, sender)) {
+        p.setHealth(0);
+        sendActionedMessage(p);
+      }
+    }
     return true;
   }
 
