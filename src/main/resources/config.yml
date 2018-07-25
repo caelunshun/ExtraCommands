@@ -27,7 +27,6 @@ messages:
   killall: '&7&lServer&5>> &b&lYou were killed!'
   clearall: '&7&lServer&5>> &b&lYour inventory has been cleared!'
   giveall: '&7&lServer&5>> &b&lYou received an item!'
-  command-disabled: '&7&lServer&5>> This command is disabled.'
 
   clearall-complete: '&7&lServer&5>> &7Cleared inventory of all players.'
   day-complete: '&7&lServer&5>> &7Time set to day.'
@@ -56,11 +55,10 @@ messages:
   tpall-usage: '&CUsage: /tpall <x> <y> <z> [world]'
 
   no-permission: '&4You do not have access to that command.'
-
   autohub-required: '&CError: AutoHub is not installed or the hub is not set.'
-
   must-be-a-player: '&CYou must be a player to execute this command.'
-
+  command-disabled: '&7&lServer&5>> This command is disabled.'
+  
   player-not-found: '&CPlayer {player} was not found.'
   world-not-found: '&CWorld {world} was not found.'
 
