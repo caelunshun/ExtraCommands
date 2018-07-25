@@ -1,9 +1,7 @@
 package net.twilightdevelopment.plugin.extracommands;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import net.md_5.bungee.api.ChatColor;
-import net.twilightdevelopment.plugin.extracommands.placeholder.PlaceholderUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -35,7 +33,7 @@ public class GiveAll extends ExtraCommandExecutor {
   @Override
   public boolean execute(ExtraCommand cmd, CommandSender sender, String[] args) {
     int amount = 1;
-    Material type = null;
+    Material type;
     if (args.length == 0) {
       sendUsage(sender);
       return false;

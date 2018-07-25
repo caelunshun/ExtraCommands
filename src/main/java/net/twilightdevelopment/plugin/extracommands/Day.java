@@ -4,9 +4,7 @@ import net.md_5.bungee.api.ChatColor;
 import net.twilightdevelopment.plugin.extracommands.placeholder.PlaceholderUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,7 +18,7 @@ public class Day extends ExtraCommandExecutor {
 
   @Override
   protected boolean execute(ExtraCommand cmd, CommandSender sender, String[] args) {
-    World target = null;
+    World target;
     if (sender instanceof Player) {
       target = ((Player) sender).getWorld();
     } else target = Bukkit.getWorld("world");

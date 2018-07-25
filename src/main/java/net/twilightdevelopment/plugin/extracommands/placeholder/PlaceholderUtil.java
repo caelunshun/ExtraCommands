@@ -1,6 +1,5 @@
 package net.twilightdevelopment.plugin.extracommands.placeholder;
 
-import net.twilightdevelopment.plugin.extracommands.ExtraCommands;
 import org.apache.commons.lang.Validate;
 
 import java.util.Map;

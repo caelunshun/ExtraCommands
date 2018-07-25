@@ -3,7 +3,7 @@ package net.twilightdevelopment.plugin.extracommands.placeholder;
 import com.google.common.collect.ImmutableMap;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class PlaceholderUtilTest {
 
