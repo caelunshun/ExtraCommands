@@ -22,6 +22,7 @@ public class HubAll extends ExtraCommandExecutor {
       sender.sendMessage(
           ChatColor.translateAlternateColorCodes(
               '&', plugin.getConfig().getString("messages.autohub-required")));
+      return false;
     }
     return true;
   }

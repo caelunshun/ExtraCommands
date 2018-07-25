@@ -25,9 +25,9 @@ public class TPAll extends ExtraCommandExecutor {
 
   @Override
   public boolean execute(ExtraCommand cmd, CommandSender sender, String[] args) {
-    int x;
-    int y;
-    int z;
+    double x;
+    double y;
+    double z;
     World world = Bukkit.getWorld("world");
     if (args.length < 3) {
       sendUsage(sender);
@@ -35,9 +35,9 @@ public class TPAll extends ExtraCommandExecutor {
     }
 
     try {
-      x = Integer.valueOf(args[0]);
-      y = Integer.valueOf(args[1]);
-      z = Integer.valueOf(args[2]);
+      x = Double.valueOf(args[0]);
+      y = Double.valueOf(args[1]);
+      z = Double.valueOf(args[2]);
     } catch (NumberFormatException e) {
       sendUsage(sender);
       return false;
@@ -58,6 +58,7 @@ public class TPAll extends ExtraCommandExecutor {
     for (Player p : Bukkit.getOnlinePlayers()) {
       if (dodgeCheck(p, sender)) {
         p.teleport(location);
+        sendActionedMessage(p);
       }
     }
 
