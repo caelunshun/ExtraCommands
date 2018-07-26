@@ -20,7 +20,7 @@ public class ExtraCommandsCommand implements CommandExecutor, TabCompleter {
           + ChatColor.BOLD
           + "ExtraCommands"
           + ChatColor.GRAY
-          + "--------"
+          + "--------\n"
           + ChatColor.AQUA
           + "Version: "
           + ChatColor.GRAY
@@ -45,7 +45,9 @@ public class ExtraCommandsCommand implements CommandExecutor, TabCompleter {
         && (sender instanceof ConsoleCommandSender
             || sender.hasPermission("extracommands.reload"))) {
       plugin.reloadConfig();
-      sender.sendMessage(ChatColor.GREEN + "Plugin reloaded successfully.");
+      sender.sendMessage(
+          ChatColor.translateAlternateColorCodes(
+              '&', plugin.getConfig().getString("messages.plugin-reloaded")));
     }
     return true;
   }

@@ -57,13 +57,13 @@ messages:
   no-permission: '&4You do not have access to that command.'
   autohub-required: '&CError: AutoHub is not installed or the hub is not set.'
   must-be-a-player: '&CYou must be a player to execute this command.'
-  command-disabled: '&7&lServer&5>> This command is disabled.'
+  command-disabled: '&7&lServer&5>> &7This command is disabled.'
 
   player-not-found: '&CPlayer {player} was not found.'
   world-not-found: '&CWorld {world} was not found.'
   item-type-not-found: '&CItem type {type} was not found.'
 
-  plugin-reloaded: '&7&lExtraCommands&5>> Plugin reloaded.'
+  plugin-reloaded: '&7&lExtraCommands&5>> &7Plugin reloaded.'
 
 update-checker: true
   
