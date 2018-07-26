@@ -5,6 +5,7 @@ import net.twilightdevelopment.plugin.extracommands.autoupdater.ExtraCommandsUpd
 import net.twilightdevelopment.plugin.extracommands.commands.*;
 import org.bstats.bukkit.MetricsLite;
 import org.bukkit.Bukkit;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Set;
@@ -16,7 +17,8 @@ public class ExtraCommands extends JavaPlugin {
   private static final Set<String> cmdNames;
 
   static {
-    cmdNames = ImmutableSet.of(
+    cmdNames =
+        ImmutableSet.of(
             "huball",
             "kickall",
             "tpall",
@@ -28,8 +30,7 @@ public class ExtraCommands extends JavaPlugin {
             "day",
             "night",
             "clearall",
-            "giveall"
-    );
+            "giveall");
   }
 
   @Override
@@ -56,6 +57,11 @@ public class ExtraCommands extends JavaPlugin {
     getCommand("night").setExecutor(new Night(this));
     getCommand("clearall").setExecutor(new ClearAll(this));
     getCommand("giveall").setExecutor(new GiveAll(this));
+
+    PluginCommand baseCmd = getCommand("extracommands");
+    ExtraCommandsCommand baseCmdImpl = new ExtraCommandsCommand(this);
+    baseCmd.setExecutor(baseCmdImpl);
+    baseCmd.setTabCompleter(baseCmdImpl);
   }
 
   @Override
@@ -71,8 +77,7 @@ public class ExtraCommands extends JavaPlugin {
     // Upgrade configuration to add options in newer versions to older configs
     if (!getConfig().contains("affect-command-issuer", true)) {
       for (String cmdName : cmdNames) {
-        if (!cmdName.matches(".*all"))
-          continue;
+        if (!cmdName.matches(".*all")) continue;
         String path = "affect-command-issuer." + cmdName;
         getConfig().createSection(path);
         getConfig().set(path, true);

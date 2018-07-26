@@ -63,6 +63,8 @@ messages:
   world-not-found: '&CWorld {world} was not found.'
   item-type-not-found: '&CItem type {type} was not found.'
 
+  plugin-reloaded: '&7&lExtraCommands&5>> Plugin reloaded.'
+
 update-checker: true
   
   

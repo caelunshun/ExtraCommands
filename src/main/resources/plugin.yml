@@ -54,6 +54,10 @@ commands:
     description: Gives an item to all players
     usage: /giveall <item> [amount]
 
+  extracommands:
+    description: Base ExtraCommands command
+    usage: /extracommands (info | reload)
+
 
 permissions:
   extracommands.huball:
@@ -109,7 +113,12 @@ permissions:
   
   extracommands.dodgegiveall:
     default: false
- 
+
+  extracommands.info:
+    default: true
+
+  extracommands.reload:
+    default: false
     
  
   
