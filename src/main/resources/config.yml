@@ -61,6 +61,7 @@ messages:
 
   player-not-found: '&CPlayer {player} was not found.'
   world-not-found: '&CWorld {world} was not found.'
+  item-type-not-found: '&CItem type {type} was not found.'
 
 update-checker: true
   

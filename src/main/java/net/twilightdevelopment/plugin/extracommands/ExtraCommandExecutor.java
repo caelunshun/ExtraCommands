@@ -58,15 +58,17 @@ public abstract class ExtraCommandExecutor implements CommandExecutor {
   }
 
   private final void sendDisabledMessage(CommandSender sender) {
-    sender.sendMessage(
+    String msg =
         ChatColor.translateAlternateColorCodes(
-            '&', plugin.getConfig().getString("messages.command-disabled-message")));
+            '&', plugin.getConfig().getString("messages.command-disabled-message"));
+    if (!msg.isEmpty()) sender.sendMessage(msg);
   }
 
   private final void sendNoPermissionMessage(CommandSender sender) {
-    sender.sendMessage(
+    String msg =
         ChatColor.translateAlternateColorCodes(
-            '&', plugin.getConfig().getString("messages.no-permission")));
+            '&', plugin.getConfig().getString("messages.no-permission"));
+    if (!msg.isEmpty()) sender.sendMessage(msg);
   }
 
   private final boolean preconditionCheck(CommandSender sender) {
@@ -88,11 +90,12 @@ public abstract class ExtraCommandExecutor implements CommandExecutor {
   }
 
   private void sendSuccess(CommandSender sender, Map<String, String> placeholders) {
-    sender.sendMessage(
+    String msg =
         ChatColor.translateAlternateColorCodes(
             '&',
             PlaceholderUtil.applyPlaceholders(
-                plugin.getConfig().getString("messages." + cmdName + "-complete"), placeholders)));
+                plugin.getConfig().getString("messages." + cmdName + "-complete"), placeholders));
+    if (!msg.isEmpty()) sender.sendMessage(msg);
   }
 
   private void sendSuccess(CommandSender sender) {
@@ -110,9 +113,10 @@ public abstract class ExtraCommandExecutor implements CommandExecutor {
    * @param player The player to send the message to
    */
   protected final void sendActionedMessage(Player player) {
-    player.sendMessage(
+    String msg =
         ChatColor.translateAlternateColorCodes(
-            '&', plugin.getConfig().getString("messages." + cmdName)));
+            '&', plugin.getConfig().getString("messages." + cmdName));
+    if (!msg.isEmpty()) player.sendMessage(msg);
   }
 
   protected final void sendUsage(CommandSender sender) {
@@ -126,10 +130,11 @@ public abstract class ExtraCommandExecutor implements CommandExecutor {
   }
 
   protected final void sendPlayerRequired(CommandSender sender) {
-    sender.sendMessage(
+    String msg =
         plugin
             .getConfig()
-            .getString(ChatColor.translateAlternateColorCodes('&', "messages.must-be-player")));
+            .getString(ChatColor.translateAlternateColorCodes('&', "messages.must-be-player"));
+    if (!msg.isEmpty()) sender.sendMessage(msg);
   }
 
   protected abstract boolean execute(ExtraCommand cmd, CommandSender sender, String[] args);

@@ -1,9 +1,11 @@
 package net.twilightdevelopment.plugin.extracommands.commands;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import net.md_5.bungee.api.ChatColor;
 import net.twilightdevelopment.plugin.extracommands.ExtraCommand;
 import net.twilightdevelopment.plugin.extracommands.ExtraCommandExecutor;
+import net.twilightdevelopment.plugin.extracommands.placeholder.PlaceholderUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -42,7 +44,11 @@ public class GiveAll extends ExtraCommandExecutor {
     }
     type = Material.matchMaterial(args[0]);
     if (type == null) {
-      sender.sendMessage(String.format(ChatColor.RED + "Item type %s not found!", args[0]));
+      sender.sendMessage(
+          PlaceholderUtil.applyPlaceholders(
+              ChatColor.translateAlternateColorCodes(
+                  '&', plugin.getConfig().getString("messages.item-type-not-found")),
+              ImmutableMap.of("type", args[0])));
       return false;
     }
     if (args.length == 2) {

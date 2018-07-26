@@ -28,12 +28,4 @@ public class Day extends ExtraCommandExecutor {
     target.setTime(1000);
     return true;
   }
-
-  private void sendResultMessage(CommandSender sender) {
-    sender.sendMessage(
-        ChatColor.translateAlternateColorCodes(
-            '&',
-            PlaceholderUtil.applyPlaceholders(
-                plugin.getConfig().getString("messages.day-complete"), Collections.emptyMap())));
-  }
 }
