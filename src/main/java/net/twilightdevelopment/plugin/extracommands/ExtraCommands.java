@@ -9,6 +9,7 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public class ExtraCommands extends JavaPlugin {
 
@@ -82,7 +83,52 @@ public class ExtraCommands extends JavaPlugin {
         getConfig().createSection(path);
         getConfig().set(path, true);
       }
-      saveConfig();
+    }
+
+    Pattern allPattern = Pattern.compile("[a-zA-z]*all");
+    for (String cmd : cmdNames) {
+      if (allPattern.matcher(cmd).matches() && !getConfig().contains("messages." + cmd, true)) {
+        getConfig().createSection("messages." + cmd);
+        getConfig().set("messages." + cmd, getConfig().get("messages." + cmd + "-message"));
+      }
+    }
+    if (!getConfig().contains("messages.default-kickall", true)) {
+      getConfig().set("messages.default-kickall", getConfig().getDefaults().get("messages.default-kickall"));
+    }
+    for (String cmd : cmdNames) {
+      if (!getConfig().contains("messages." + cmd + "-complete", true)) {
+        getConfig().createSection("messages." + cmd + "-complete");
+        getConfig().set("messages." + cmd + "-complete", getConfig().getDefaults().get("messages." + cmd + "-complete"));
+      }
+    }
+
+    for (String cmd : cmdNames) {
+      String usage = "messages." + cmd + "-usage";
+      if (!getConfig().contains(usage, true)) {
+        getConfig().createSection(usage);
+        getConfig().set(usage, getConfig().getDefaults().get(usage));
+      }
+    }
+
+    if (!getConfig().contains("messages.command-disabled", true)) {
+      getConfig().createSection("messages.command-disabled");
+      getConfig().set("messages.command-disabled", getConfig().get("messages.command-disabled-message"));
+    }
+    configUpgradeDefault("messages.no-permission");
+    configUpgradeDefault("messages.autohub-required");
+    configUpgradeDefault("messages.must-be-a-player");
+    configUpgradeDefault("messages.player-not-found");
+    configUpgradeDefault("messages.world-not-found");
+    configUpgradeDefault("messages.item-type-not-found");
+    configUpgradeDefault("messages.plugin-reloaded");
+
+    saveConfig();
+  }
+
+  private void configUpgradeDefault(String path) {
+    if (!getConfig().contains(path, true)) {
+      getConfig().createSection(path);
+      getConfig().set(path, getConfig().getDefaults().get(path));
     }
   }
 }
