@@ -1,8 +1,8 @@
 affect-command-issuer:
   huball: true
-  kickall: true
+  kickall: false
   tpall: true
-  killall: true
+  killall: false
   clearall: true
   giveall: true
 
