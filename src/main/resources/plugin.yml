@@ -61,64 +61,64 @@ commands:
 
 permissions:
   extracommands.huball:
-    default: false
+    default: op
   
   extracommands.dodgehuball:
-    default: false
+    default: op
   
   extracommands.tpall:
-    default: false
+    default: op
   
   extracommands.dodgetpall:
-    default: false
+    default: op
   
   extracommands.kickall:
-    default: false
+    default: op
   
   extracommands.dodgekickall:
-    default: false
+    default: op
   
   extracommands.setspawn:
-    default: false
+    default: op
     
   extracommands.ip:
-    default: false
+    default: op
     
   extracommands.hideplayers:
-    default: false
+    default: op
     
   extracommands.showplayers:
-    default: false
+    default: op
     
   extracommands.killall:
-    default: false
+    default: op
     
   extracommands.dodgekillall:
-    default: false
+    default: op
     
   extracommands.day:
-    default: false
+    default: op
     
   extracommands.night:
-    default: false
+    default: op
     
   extracommands.clearall:
-    default: false
+    default: op
     
   extracommands.dodgeclearall:
-    default: false
+    default: op
     
   extracommands.giveall:
-    default: false
+    default: op
   
   extracommands.dodgegiveall:
-    default: false
+    default: op
 
   extracommands.info:
-    default: true
+    default: op
 
   extracommands.reload:
-    default: false
+    default: op
     
  
   
