@@ -20,7 +20,6 @@ public class ExtraCommands extends JavaPlugin {
   static {
     cmdNames =
         ImmutableSet.of(
-            "huball",
             "kickall",
             "tpall",
             "setspawn",
@@ -46,7 +45,6 @@ public class ExtraCommands extends JavaPlugin {
       Bukkit.getScheduler()
           .runTaskTimerAsynchronously(this, new ExtraCommandsUpdater(this), 0, UPDATER_INTERVAL);
 
-    getCommand("huball").setExecutor(new HubAll(this));
     getCommand("kickall").setExecutor(new KickAll(this));
     getCommand("tpall").setExecutor(new TPAll(this));
     getCommand("setspawn").setExecutor(new SetSpawn(this));
@@ -115,7 +113,6 @@ public class ExtraCommands extends JavaPlugin {
       getConfig().set("messages.command-disabled", getConfig().get("messages.command-disabled-message"));
     }
     configUpgradeDefault("messages.no-permission");
-    configUpgradeDefault("messages.autohub-required");
     configUpgradeDefault("messages.must-be-a-player");
     configUpgradeDefault("messages.player-not-found");
     configUpgradeDefault("messages.world-not-found");

@@ -1,5 +1,4 @@
 affect-command-issuer:
-  huball: true
   kickall: false
   tpall: true
   killall: false
@@ -7,7 +6,6 @@ affect-command-issuer:
   giveall: true
 
 commands:
-  huball: true
   kickall: true
   tpall: true
   setspawn: true
@@ -21,7 +19,6 @@ commands:
   giveall: true
   
 messages:
-  huball: '&7&lServer&5>> &b&lYou have been teleported to the lobby!'
   default-kickall: '&7&lServer&5>> &b&lYou have been kicked!'
   tpall: '&7&lServer&5>> &b&lYou have been teleported!'
   killall: '&7&lServer&5>> &b&lYou were killed!'
@@ -32,7 +29,6 @@ messages:
   day-complete: '&7&lServer&5>> &7Time set to day.'
   giveall-complete: '&7&lServer&5>> &7Given all players {amount} of {item}.'
   hideplayers-complete: '&7&lServer&5>> &7Hidden players from your view.'
-  huball-complete: '&7&lServer&5>> &7All players teleported to the hub.'
   ip-complete: '&7&lServer&5>> &7The IP address of &b{player} &7is &b{ip}&7.'
   kickall-complete: '&7&lServer&5>> &7Kicked all players.'
   killall-complete: '&7&lServer&5>> &7Killed all players.'
@@ -45,7 +41,6 @@ messages:
   day-usage: '&CUsage: /day'
   giveall-usage: '&CUsage: /giveall <item> [amount]'
   hideplayers-usage: '&CUsage: /hideplayers'
-  huball-usage: '&CUsage: /huball'
   ip-usage: '&CUsage: /ip <player>'
   kickall-usage: '&CUsage: /kickall <reason>'
   killall-usage: '&CUsage: /killall'
@@ -55,7 +50,6 @@ messages:
   tpall-usage: '&CUsage: /tpall <x> <y> <z> [world]'
 
   no-permission: '&4You do not have access to that command.'
-  autohub-required: '&CError: AutoHub is not installed or the hub is not set.'
   must-be-a-player: '&CYou must be a player to execute this command.'
   command-disabled: '&7&lServer&5>> &7This command is disabled.'
 

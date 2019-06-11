@@ -2,14 +2,9 @@ name: ${project.name}
 main: net.twilightdevelopment.plugin.extracommands.ExtraCommands
 version: ${project.version}
 author: gzx
-softdepend: [AutoHub]
 api-version: 1.13
 
 commands:
-  huball:
-    description: Teleports all users online except those with the extracommands.dodgehuball permission to the hub location/server (requires AutoHub v1.1.0 or later)
-    usage: /huball
-    
   tpall:
     description: Teleports all online users except those with the extracommands.dodgetpall permission to specified location
     usage: /tpall <x> <y> <z> (optional)<world>
