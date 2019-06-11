@@ -1,4 +1,4 @@
-package net.twilightdevelopment.plugin.extracommands;
+package me.caelunshun.extracommands;
 
 import com.google.common.collect.ImmutableMap;
 

@@ -1,8 +1,8 @@
-package net.twilightdevelopment.plugin.extracommands;
+package me.caelunshun.extracommands;
 
 import com.google.common.collect.ImmutableSet;
+import me.caelunshun.extracommands.commands.*;
 import me.caelunshun.shun.UpdateChecker;
-import net.twilightdevelopment.plugin.extracommands.commands.*;
 import org.bstats.bukkit.MetricsLite;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;

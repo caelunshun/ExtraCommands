@@ -1,7 +1,7 @@
-package net.twilightdevelopment.plugin.extracommands.commands;
+package me.caelunshun.extracommands.commands;
 
-import net.twilightdevelopment.plugin.extracommands.ExtraCommand;
-import net.twilightdevelopment.plugin.extracommands.ExtraCommandExecutor;
+import me.caelunshun.extracommands.ExtraCommand;
+import me.caelunshun.extracommands.ExtraCommandExecutor;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -9,19 +9,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
 
-public class KillAll extends ExtraCommandExecutor {
+public class ShowPlayers extends ExtraCommandExecutor {
 
-  public KillAll(JavaPlugin plugin) {
-    super(plugin, "killall");
+  public ShowPlayers(JavaPlugin plugin) {
+    super(plugin, "showplayers");
   }
 
   @Override
   public boolean execute(ExtraCommand cmd, CommandSender sender, String[] args) {
+    if (!checkPlayer(sender)) sendPlayerRequired(sender);
     for (Player p : Bukkit.getOnlinePlayers()) {
-      if (dodgeCheck(p, sender)) {
-        p.setHealth(0);
-        sendActionedMessage(p);
-      }
+      ((Player) sender).showPlayer(plugin, p);
     }
     return true;
   }

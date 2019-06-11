@@ -1,4 +1,4 @@
-package net.twilightdevelopment.plugin.extracommands.commands;
+package me.caelunshun.extracommands.commands;
 
 import com.google.common.collect.ImmutableSet;
 import org.bukkit.ChatColor;

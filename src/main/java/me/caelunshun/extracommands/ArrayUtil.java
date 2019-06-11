@@ -1,4 +1,4 @@
-package net.twilightdevelopment.plugin.extracommands;
+package me.caelunshun.extracommands;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -1,4 +1,4 @@
-package net.twilightdevelopment.plugin.extracommands.placeholder;
+package me.caelunshun.extracommands.placeholder;
 
 import org.apache.commons.lang.Validate;
 

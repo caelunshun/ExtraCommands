@@ -1,10 +1,10 @@
-package net.twilightdevelopment.plugin.extracommands.commands;
+package me.caelunshun.extracommands.commands;
 
 import com.google.common.collect.ImmutableMap;
-import net.twilightdevelopment.plugin.extracommands.ArrayUtil;
-import net.twilightdevelopment.plugin.extracommands.ExtraCommand;
-import net.twilightdevelopment.plugin.extracommands.ExtraCommandExecutor;
-import net.twilightdevelopment.plugin.extracommands.placeholder.PlaceholderUtil;
+import me.caelunshun.extracommands.placeholder.PlaceholderUtil;
+import me.caelunshun.extracommands.ArrayUtil;
+import me.caelunshun.extracommands.ExtraCommand;
+import me.caelunshun.extracommands.ExtraCommandExecutor;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;

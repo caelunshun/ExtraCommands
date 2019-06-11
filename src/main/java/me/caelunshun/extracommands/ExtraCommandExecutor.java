@@ -1,8 +1,8 @@
-package net.twilightdevelopment.plugin.extracommands;
+package me.caelunshun.extracommands;
 
 import com.google.common.collect.ImmutableMap;
+import me.caelunshun.extracommands.placeholder.PlaceholderUtil;
 import net.md_5.bungee.api.ChatColor;
-import net.twilightdevelopment.plugin.extracommands.placeholder.PlaceholderUtil;
 import org.apache.commons.lang.Validate;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
