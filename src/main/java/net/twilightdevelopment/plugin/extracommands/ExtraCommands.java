@@ -40,8 +40,7 @@ public class ExtraCommands extends JavaPlugin {
 
     upgradeConfig();
 
-    if (getConfig().getBoolean("update-checker"))
-      new UpdateChecker(this, "35102");
+    if (getConfig().getBoolean("update-checker")) new UpdateChecker(this, "35102");
 
     getCommand("kickall").setExecutor(new KickAll(this));
     getCommand("tpall").setExecutor(new TPAll(this));
@@ -89,12 +88,18 @@ public class ExtraCommands extends JavaPlugin {
       }
     }
     if (!getConfig().contains("messages.default-kickall", true)) {
-      getConfig().set("messages.default-kickall", getConfig().getDefaults().get("messages.default-kickall"));
+      getConfig()
+          .set(
+              "messages.default-kickall",
+              getConfig().getDefaults().get("messages.default-kickall"));
     }
     for (String cmd : cmdNames) {
       if (!getConfig().contains("messages." + cmd + "-complete", true)) {
         getConfig().createSection("messages." + cmd + "-complete");
-        getConfig().set("messages." + cmd + "-complete", getConfig().getDefaults().get("messages." + cmd + "-complete"));
+        getConfig()
+            .set(
+                "messages." + cmd + "-complete",
+                getConfig().getDefaults().get("messages." + cmd + "-complete"));
       }
     }
 
@@ -108,7 +113,8 @@ public class ExtraCommands extends JavaPlugin {
 
     if (!getConfig().contains("messages.command-disabled", true)) {
       getConfig().createSection("messages.command-disabled");
-      getConfig().set("messages.command-disabled", getConfig().get("messages.command-disabled-message"));
+      getConfig()
+          .set("messages.command-disabled", getConfig().get("messages.command-disabled-message"));
     }
     configUpgradeDefault("messages.no-permission");
     configUpgradeDefault("messages.must-be-a-player");

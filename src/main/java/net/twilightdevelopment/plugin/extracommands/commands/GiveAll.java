@@ -80,8 +80,7 @@ public class GiveAll extends ExtraCommandExecutor {
       StringUtil.copyPartialMatches(args[0], MATERIAL_NAMES, result);
       Collections.sort(result);
       return result;
-    }
-    else if (args.length == 2) {
+    } else if (args.length == 2) {
       if (args[1].isEmpty()) {
         // Suggest "1" as default value for amount
         return Collections.singletonList("1");

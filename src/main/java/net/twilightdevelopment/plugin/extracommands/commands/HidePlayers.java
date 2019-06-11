@@ -15,8 +15,7 @@ public class HidePlayers extends ExtraCommandExecutor {
 
   @Override
   public boolean execute(ExtraCommand cmd, CommandSender sender, String[] args) {
-    if (!checkPlayer(sender))
-      sendPlayerRequired(sender);
+    if (!checkPlayer(sender)) sendPlayerRequired(sender);
     for (Player p : Bukkit.getOnlinePlayers()) {
       ((Player) sender).hidePlayer(plugin, p);
     }

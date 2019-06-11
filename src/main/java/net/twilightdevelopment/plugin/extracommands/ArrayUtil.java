@@ -7,7 +7,8 @@ import java.util.function.Function;
 
 public class ArrayUtil {
 
-  public static <B, A> Collection<A> applyModification(Collection<B> before, Function<B, A> function) {
+  public static <B, A> Collection<A> applyModification(
+      Collection<B> before, Function<B, A> function) {
     final List<A> result = new ArrayList<>();
     for (B b : before) {
       result.add(function.apply(b));
