@@ -53,7 +53,7 @@ public class ExtraCommands extends JavaPlugin {
     getCommand("day").setExecutor(new Day(this));
     getCommand("night").setExecutor(new Night(this));
     getCommand("clearall").setExecutor(new ClearAll(this));
-    getCommand("giveall").setExecutor(new GiveAll(this));
+    getCommand("givall").setExecutor(new GiveAll(this));
 
     PluginCommand baseCmd = getCommand("extracommands");
     ExtraCommandsCommand baseCmdImpl = new ExtraCommandsCommand(this);

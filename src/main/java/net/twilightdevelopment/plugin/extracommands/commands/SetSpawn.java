@@ -24,9 +24,4 @@ public class SetSpawn extends ExtraCommandExecutor {
     ((Player) sender).getWorld().setSpawnLocation(((Player) sender).getLocation());
     return true;
   }
-
-  @Override
-  protected List<String> parseTabComplete(CommandSender sender, String[] args) {
-    return super.parseTabComplete(sender, args);
-  }
 }
