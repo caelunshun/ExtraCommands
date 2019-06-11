@@ -1,10 +1,9 @@
 package net.twilightdevelopment.plugin.extracommands;
 
 import com.google.common.collect.ImmutableSet;
-import net.twilightdevelopment.plugin.extracommands.autoupdater.ExtraCommandsUpdater;
+import me.caelunshun.shun.UpdateChecker;
 import net.twilightdevelopment.plugin.extracommands.commands.*;
 import org.bstats.bukkit.MetricsLite;
-import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -42,8 +41,7 @@ public class ExtraCommands extends JavaPlugin {
     upgradeConfig();
 
     if (getConfig().getBoolean("update-checker"))
-      Bukkit.getScheduler()
-          .runTaskTimerAsynchronously(this, new ExtraCommandsUpdater(this), 0, UPDATER_INTERVAL);
+      new UpdateChecker(this, "35102");
 
     getCommand("kickall").setExecutor(new KickAll(this));
     getCommand("tpall").setExecutor(new TPAll(this));

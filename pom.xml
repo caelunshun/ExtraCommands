@@ -59,6 +59,10 @@
             <id>bstats-repo</id>
             <url>http://repo.bstats.org/content/repositories/releases/</url>
         </repository>
+        <repository>
+            <id>caelunshun-repo</id>
+            <url>https://mvn.caelunshun.me/repository/internal</url>
+        </repository>
     </repositories>
     <dependencies>
         <dependency>
@@ -72,6 +76,11 @@
             <artifactId>bstats-bukkit-lite</artifactId>
             <version>1.2</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>me.caelunshun</groupId>
+            <artifactId>shun</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
